@@ -49,12 +49,18 @@ a{
   text-transform: uppercase;
 
 }
+asdflk;jasdflkajsdfl;kjasdflkjas;djkfkjl;
+hung
+.header-bottom .dropdown-menu{
+  background-color: var(--color-131921);
+  width: 100%;
+}
 .header-bottom .dropdown button:focus{
   box-shadow: none;
 }
-.header-bottom .dropdown button::before{
+/* .header-bottom .dropdown button::before{
   contain:url('../public/images/menu.svg');
-}
+} */
 .header-upper .input-group-text{
 
   background-color: var(--color-febd69);
