@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {BsLinkedin,BsGithub,BsYoutube,BsInstagram} from 'react-icons/bs' 
+import {SiZalo} from 'react-icons/si';
 const Footer = () => {
   return (
     <>
@@ -38,7 +40,15 @@ const Footer = () => {
               <div >
                   <address className='text-white'> 
                   Hno : 277 Near Vill chopal,<br/>Sonipat,Haryana <br/> PinCode: 123434</address>
-                  <a href='tel:+032423' className='mt-4'></a>
+                  <a href='tel:+032423' className='mt-3 d-block mb-1 text-white'>+03423423</a>
+                  <a href='mailto:hunga37732@gmail.com' className='mt-2 d-block mb-0 text-white'>hunga37732@gmail.com</a>
+              <div className="social_icons d-flex align-items-center gap-30 mt-4">
+                <a calssName='text-white'><BsGithub className='fs-4'/></a>
+                <a className='text-white'><BsInstagram className='fs-4'/></a>
+                <a className='text-white'><BsYoutube className='fs-4'/></a>
+                <a className='text-white'><BsLinkedin className='fs-4'/></a>
+                <a className='text-white'><SiZalo className='fs-4'/></a>
+              </div>
               </div>
             </div>
             <div className="col-3">
