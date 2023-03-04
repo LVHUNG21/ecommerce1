@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactStars from 'react-rating-stars-component';
 import BreadCrumb from '../components/BreadCrumb'
 import { Helmet } from 'react-helmet';
 import Meta from '../components/Meta';
@@ -45,31 +46,46 @@ const OurStore = () => {
                                             </label>
                                         </div>
                                     </div>
-                                    <h5 className="sub-title">Price</h5> 
+                                    <h5 className="sub-title">Price</h5>
                                     <div className="d-flex align-items-center gap-10">
-                                                <div className="form-floating mb-3">
-                                                    <input type="email" className="form-control py-1" id="floatingInput" placeholder="From"/>
-                                                    <label htmlFor="floatingInput"> From</label>
-                                                </div>
-                                                <div className="form-floating mb-3">
-                                                    <input type="email" className="form-control py-1" id="floatingInput" placeholder="To"/>
-                                                    <label htmlFor="floatingInput1"> To</label>
-                                                </div>
-                                </div>
-                                    <h5 className="sub-title">Colors</h5> 
+                                        <div className="form-floating">
+                                            <input type="email" className="form-control py-1" id="floatingInput" placeholder="From" />
+                                            <label htmlFor="floatingInput"> From</label>
+                                        </div>
+                                        <div className="form-floating ">
+                                            <input type="email" className="form-control py-1" id="floatingInput" placeholder="To" />
+                                            <label htmlFor="floatingInput1"> To</label>
+                                        </div>
+                                    </div>
+                                    <h5 className="sub-title">Colors</h5>
                                     <div>
-                                        <div >
-                                            <ul className='colors ps-0'>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                            </ul>
+                                        <ul className='colors ps-0'>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                    <h5 className="sub-title">Size</h5>
+                                    <div>
+                                        <div className="form-check">
+                                            <input className='form-check-input'
+                                                type="checkbox" value='' id='color-1' />
+                                            <label className=" form-check-label" htmlFor="color-1">
+                                                S(2)
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className='form-check-input'
+                                                type="checkbox" value='' id='color-2' />
+                                            <label className=" form-check-label" htmlFor="color-2">
+                                                M(2)
+                                            </label>
                                         </div>
                                     </div>
 
@@ -78,14 +94,98 @@ const OurStore = () => {
                                     <h3 className="filter-title">
                                         Product tags
                                     </h3>
+                                    <div>
+                                        <div className="product-tags d-flex flex-wrap align-items-center gap-10">
+                                            <span className="badge bg-light text-secondary rounded-3 py-2 px-3">
+                                                Headphone
+                                            </span>
+                                            <span className="badge bg-light text-secondary rounded-3 py-2 px-3">
+                                                Laptop
+                                            </span>
+                                            <span className="badge bg-light text-secondary rounded-3 py-2 px-3">
+                                                Mobile
+                                            </span>
+                                            <span className="badge bg-light text-secondary rounded-3 py-2 px-3">
+                                                Wire
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="filter-card mb-3">
                                     <h3 className="filter-title">
                                         Random Product
                                     </h3>
+                                    <div>
+                                        <div className="random-products d-flex">
+                                            <div className="w-50">
+                                                <img src="images/watch.jpg" className='img-fluid' alt='watch' />
+                                            </div>
+                                            <div className="w-50">
+                                                <h5>
+                                                    Kid headphone bulk 10 pack multi colored for students
+                                                </h5>
+                                                <ReactStars
+                                                    count={5}
+                                                    // onChange={ratingChanged}
+                                                    size={24}
+                                                    edit='false'
+                                                    value='3'
+                                                    activeColor="#ffd700"
+                                                />,
+                                                <b>$300</b>
+                                            </div>
+
+                                        </div>
+                                        <div className="random-products d-flex">
+                                            <div className="w-50">
+                                                <img src="images/watch.jpg" className='img-fluid' alt='watch' />
+                                            </div>
+                                            <div className="w-50">
+                                                <h5>
+                                                    Kid headphone bulk 10 pack multi colored for students
+                                                </h5>
+                                                <ReactStars
+                                                    count={5}
+                                                    // onChange={ratingChanged}
+                                                    size={24}
+                                                    edit='false'
+                                                    value='3'
+                                                    activeColor="#ffd700"
+                                                />,
+                                                <b>$300</b>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-9"></div>
+                        </div>
+                        <div className="col-9">
+                            <div className="filter-sort-grid">
+                                <div className='d-flex justify-content-between align-items-center'>
+                                <div className='d-flex align-items-center gap-10'>
+                                    <p className="mb-0 d-block">Sort by</p>
+                                    <select name="" id="" className="form-control form-select">
+                                        <option value="manual">Featured</option>
+                                        <option value="best-selling" selected='selected'>Best selling</option>
+                                        <option value="title-ascending">Alphabettically, A-Z</option>
+                                        <option value="price-ascending"> Price, low to high</option>
+                                    </select>
+                                </div>
+                                <div className='d-flex align-items-center gap-10'>
+                                    <p className="totalProducts">21 Products</p>
+                                    <div className="d-flex gap-10 align-items-center">
+
+                                        <img src="images/gr4.svg" className='d-block img-fluid' alt='grip'></img>
+                                        <img src="images/gr3.svg" className='d-block img-fluid' alt='grip'></img>
+                                        <img src="images/gr2.svg" className='d-block img-fluid' alt='grip'></img>
+                                        <img src="images/gr.svg" className='d-block img-fluid' alt='grip'></img>
+                                    </div>
+
+                                </div>
+                                </div>
+                               
+                            </div>
                         </div>
                     </div>
                 </div>
