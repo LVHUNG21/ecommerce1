@@ -389,4 +389,18 @@ border-color: var(--color-febd69);
   margin-top: 15px;
   
 }
+.colors{
+  list-style-type:none;
+  display: flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.color li{
+  width: 20px;
+    height:20px;
+    background-color: red;
+    border-radius:50%;
+
+}
+
 /* ourStore end*/
