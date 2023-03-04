@@ -48,6 +48,9 @@ a{
 .gap-30{
   gap:30px
 }
+.gap-5{
+  gap:5px
+}
 .button{
   background-color: var(--color-232f3e);
   color:white;
@@ -266,7 +269,10 @@ padding:8px 17px
     background-color:white;
 
     border-radius:10px;
-
+    overflow: hidden;
+  }
+  product-card:hover .action-bar{
+    right:15px;
   }
   .product-card .product-details h6{
     color:var(--color--bf4800);
@@ -275,9 +281,112 @@ padding:8px 17px
   .product-card .product-details h5{
     color:var(--color--1c1c1b);
     font-size:15px;
+
+  }
+  .product-card .product-image{
+    height:270px;
+  }
+  .product-card .product-image img{
+    object-fit: contain;
+  }
+  .product-card:hover .product-image>img:nth-child(1){
+    display: none;
+  }
+  .product-card .product-image>img:last-child{
+    display: block;
   }
   product-card .product-details p.price{
     font-size:16px;
     color:var(--color--1c1c1b);
   }
+  .action-bar{
+    top:10%;
+    right:-23px;
+    transition:0.3s;
+  }
+  .wishlist-icon{
+    top:3%;
+    right:15px;
+  }
 /* ProductCard end */
+/*  special product*/
+.special-product-card{
+  padding:20px 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+.special-product-card .badge{
+  background-color: #eb353b00;
+}
+/*  special product end*/
+
+/* famouscard*/
+.famous-card .famous-content{
+  top:20%;
+  left:5%;
+
+}
+.famous-card img{
+  border-radius:10px;
+}
+.famous-content h5{
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color:white;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+.famous-content h6{
+ font-size: 24px; 
+ line-height: 38px;
+ font-weight: 500;
+ color:white;
+}
+.famous-content p{
+  font-size:16px;
+  line-height:24px;
+  font-weight:100;
+  color:white;
+
+}
+/* famouscard end*/
+
+/* ourStore*/
+.filter-card{
+  background-color:white;
+  border-radius:10px;
+  padding:10px 15px;
+}
+.filter-title{
+  font-size:16px;
+  line-height:20px;
+  font-weight: 600;
+  color: var(--color--1c1c1b);
+  margin-bottom:20px;
+}
+.filter-card ul,.filter-card .form-check-label{
+  list-style-type: none;
+  font-size: 13px;
+  line-height:30px;
+  color:var(--color--777777);
+  cursor:pointer;
+}
+
+.filter-card .form-check-input:focus{
+box-shadow: none;
+border-color: rgba(0,0,0,0.25);
+}
+.filter-card .form-check-input{
+background-color: var(--color-febd69);
+border-color: var(--color-febd69);
+}
+.sub-title{
+  font-size:14px;
+  font-weight:600;
+  color: var(--color--1c1c1b);
+  margin-bottom:15px;
+  margin-top: 15px;
+  
+}
+/* ourStore end*/
