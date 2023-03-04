@@ -48,7 +48,7 @@ const Header = () => {
                         <div className="col-5">
                             <div className="header-upper-links d-flex align-items-center justify-content-between">
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <Link to='/compare-product' className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/compare.svg" alt="" />
                                         <p className="mb-0">
 
@@ -58,7 +58,7 @@ const Header = () => {
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <Link to ='/wishlist'className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/wishlist.svg" alt="wishlist" />
                                         <p className="mb-0">
                                             Fauvorite<br /> My account
@@ -66,7 +66,7 @@ const Header = () => {
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link className="d-flex align-items-center gap-10 text-white">
+                                    <Link to='/Login' className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/user.svg" alt="user" />
                                         <p className="mb-0">
                                             Login<br /> My Acount
@@ -76,7 +76,7 @@ const Header = () => {
 
                                 </div>
                                 <div>
-                                    <Link className='d-flex align-items-center gap-10 text-white'>
+                                    <Link to ='/card'className='d-flex align-items-center gap-10 text-white'>
                                         <img src="images/cart.svg" alt="cart" />
                                         <div className="d-flex flex-column">
                                             <span className='badge bg-white text-dark'>0</span>
@@ -101,7 +101,8 @@ const Header = () => {
                         <div className="col-12">
                             <div className="menu-bottom d-flex laign-items-center gap-30">
                                 <div>
-                                    <div className="dropdown">
+                                    <div className="dropdown"> Can't resolve 'react-helmet' in '/home/hung/Desktop/ecommerce/src/components'
+
                                         <button className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15  d-flex align-items-center"
                                          type="button"
                                          data-bs-toggle="dropdown" 

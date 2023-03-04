@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactStars from 'react-rating-stars-component'
-import { Link } from 'react-router-dom'
+import { Link, useLocation} from 'react-router-dom'
 
 const ProductCard = (props) => {
-    const { grid } = props;
+    const  {grid}  = props;
     let location = useLocation();
-    alert(location);
+    // alert(location);
     return (
         <div>
-            <div className={`${location.pathname == "/store" ? 'col-${grid}' : "col-3"}`}>
+            <div className={`${location.pathname == "/store" ? `col-${grid}` : "col-3"}`}>
 
                 <Link className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
@@ -34,7 +34,7 @@ const ProductCard = (props) => {
 
                             activeColor="#ffd700"
                         />,
-                        <p className={`description ${grip == 12 ? "d-block" : "d-none"}`}>
+                        <p className={`description ${grid == 12 ? "d-block" : "d-none"}`}>
                             device that uses either a system of wires along which electrical signals are sent or a system of radio signals to make it possible for you to speak to someone in another place who has a similar device: Just then, his phone rang
 
                         </p>
@@ -56,7 +56,7 @@ const ProductCard = (props) => {
                     </div>
                 </Link>
             </div>
-            <div className={`${location.pathname == "/store" ? 'col-${grid}' : "col-3"}`}>
+            <div className={`${location.pathname == "/store" ? `col-${grid}` : "col-3"}`}>
 
                 <Link className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
@@ -82,7 +82,7 @@ const ProductCard = (props) => {
 
                             activeColor="#ffd700"
                         />,
-                        <p className={`description ${grip == 12 ? "d-block" : "d-none"}`}>
+                        <p className={`description ${grid == 12 ? "d-block" : "d-none"}`}>
                             device that uses either a system of wires along which electrical signals are sent or a system of radio signals to make it possible for you to speak to someone in another place who has a similar device: Just then, his phone rang
 
                         </p>

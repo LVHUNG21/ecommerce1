@@ -1,9 +1,11 @@
-import React from 'react'
+mport React,{useState} from 'react'
 import ReactStars from 'react-rating-stars-component';
-import BreadCrumb from '../components/BreadCrumb'
+import BreadCrumb from '../components/BreadCrumb';
 import { Helmet } from 'react-helmet';
 import Meta from '../components/Meta';
+import {Link, getLocation} from 'react-router-dom'
 import ProductCard from '../components/ProductCard';
+import Color from '../components/Color';
 const OurStore = () => {
     const [grid,setGrid]=useState(4);
     const gridSetter =(i) =>{
@@ -64,17 +66,7 @@ const OurStore = () => {
                                     </div>
                                     <h5 className="sub-title">Colors</h5>
                                     <div>
-                                        <ul className='colors ps-0'>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
+                                        <Color/>
                                     </div>
                                     <h5 className="sub-title">Size</h5>
                                     <div>
