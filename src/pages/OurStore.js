@@ -161,10 +161,10 @@ const OurStore = () => {
                             </div>
                         </div>
                         <div className="col-9">
-                            <div className="filter-sort-grid">
+                            <div className="filter-sort-grid mb-4">
                                 <div className='d-flex justify-content-between align-items-center'>
                                 <div className='d-flex align-items-center gap-10'>
-                                    <p className="mb-0 d-block">Sort by</p>
+                                    <p className="mb-0 d-block " style={{width:"100px"}}>Sort by</p>
                                     <select name="" id="" className="form-control form-select">
                                         <option value="manual">Featured</option>
                                         <option value="best-selling" selected='selected'>Best selling</option>
@@ -174,17 +174,18 @@ const OurStore = () => {
                                 </div>
                                 <div className='d-flex align-items-center gap-10'>
                                     <p className="totalProducts">21 Products</p>
-                                    <div className="d-flex gap-10 align-items-center">
+                                    <div className="d-flex gap-10 align-items-center grid">
 
                                         <img src="images/gr4.svg" className='d-block img-fluid' alt='grip'></img>
                                         <img src="images/gr3.svg" className='d-block img-fluid' alt='grip'></img>
                                         <img src="images/gr2.svg" className='d-block img-fluid' alt='grip'></img>
                                         <img src="images/gr.svg" className='d-block img-fluid' alt='grip'></img>
                                     </div>
-
                                 </div>
                                 </div>
                                
+                            </div>
+                            <div className="products-list pb-5">
                             </div>
                         </div>
                     </div>
