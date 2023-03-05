@@ -1,5 +1,7 @@
 import React from 'react'
 import {HiOutlineArrowLeft} from 'react-icons/hi';
+import blog from "../images/blog-1.jpg"
+import { Link  } from 'react-router-dom';
 const SingleBlog = () => {
     return (
         <>
@@ -15,7 +17,7 @@ const SingleBlog = () => {
                         <h3 className="title">
                             A Beautiful Sunday Morning Renaissance
                         </h3>
-                        <img src="images/blog-1.webp" className="img-fluid w-100 my-4" alt="blog"/>
+                        <img src={blog} className="img-fluid w-100 my-4" alt="blog"/>
                         <p>
                             You're only as good  as your last collectin
                         </p>

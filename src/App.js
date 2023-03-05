@@ -18,6 +18,9 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import ShippingPolicy from './pages/ShippingPolicy';
 import TermAndCondition from './pages/TermAndCondition';
+import SingleProduct from './pages/SingleProduct';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 function App() {
   return( 
   <>
@@ -26,8 +29,11 @@ function App() {
     <Route  path='/' element={<Layout/>}>
     <Route index element={<Home/>}/>
     <Route path ="about" element={<About/>}/>
+    <Route path ="cart" element={<Cart/>}/>
+    <Route path ="checkout" element={<Checkout/>}/>
     <Route path ="contact" element={<Contact/>}/>
-    <Route path ="store" element={<OurStore/>}/>
+    <Route path ="product" element={<OurStore/>}/>
+    <Route path ="product/:id" element={<SingleProduct/>}/>
     <Route path ="blogs" element={<Blog/>}/>
     <Route path ="compare-product" element={<CompareProduct/>}/>
     <Route path ="wishlist" element={<Wishlist/>}/>

@@ -101,7 +101,7 @@ const Header = () => {
                         <div className="col-12">
                             <div className="menu-bottom d-flex laign-items-center gap-30">
                                 <div>
-                                    <div className="dropdown"> Can't resolve 'react-helmet' in '/home/hung/Desktop/ecommerce/src/components'
+                                    <div className="dropdown"> 
 
                                         <button className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15  d-flex align-items-center"
                                          type="button"

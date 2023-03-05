@@ -1,4 +1,4 @@
-mport React,{useState} from 'react'
+import React,{useState} from 'react'
 import ReactStars from 'react-rating-stars-component';
 import BreadCrumb from '../components/BreadCrumb';
 import { Helmet } from 'react-helmet';
