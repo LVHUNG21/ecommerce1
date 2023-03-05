@@ -12,7 +12,7 @@ const BlogCard = () => {
                 <p className="data">21 Mar, 2023</p>
                 <h5 className="title">A beautiful sunday morning renaissance</h5>
                 <p className="desc">to address all issues sunday morning renaissance</p>
-                <Link to='/' className='bottom'>Read More</Link>
+                <Link to='/blog/:id' className='bottom'>Read More</Link>
             </div>
       
     </div>
