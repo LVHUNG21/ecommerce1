@@ -5,6 +5,7 @@ import { TbGitCompare } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
 import ProductCard from '../components/ProductCard'
 import watch from "../images/watch.jpg"
+import Container from '../components/Container';
 
 const SingleProduct = () => {
     const props = { width: 400, height: 250, zoomWidth: 600, img: "images/watch.jpg" };

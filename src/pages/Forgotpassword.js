@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 const Forgotpassword = () => {
   return (
    <>
-     <div className="login-wrapper  py-5 home-wrapper-2">
-      <div className="container-xxl">
+     <Container class1="login-wrapper  py-5 home-wrapper-2">
             <div className="row">
                 <div className="col-12">
                     <div className="auth-card">
@@ -29,8 +28,7 @@ const Forgotpassword = () => {
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
+        </Container>
    </> 
 
   )

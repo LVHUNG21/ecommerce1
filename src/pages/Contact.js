@@ -1,12 +1,12 @@
 import React from 'react'
 import {AiOutlineHome,AiOutlineMail} from 'react-icons/ai';
 import {BiPhoneCall,BiInfoCircle} from 'react-icons/bi';
+import Container from '../components/Container';
 
 const Contact = () => {
   return (
   <>
-    <div className="contact-wrapper py-5 home-wrapper-2">
-      <div className="container-xxl">
+    <Container class1="contact-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44659.43848619756!2d105.81856801045495!3d20.95954385021451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acef8ad5350f%3A0x89435a3528118ff5!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaMSDbmcgTG9uZw!5e0!3m2!1svi!2s!4v1677938718109!5m2!1svi!2s" 
@@ -69,8 +69,7 @@ const Contact = () => {
           </div>
         </div>
         </div>
-      </div>
-      </div> 
+      </Container> 
   </>
   )
 }

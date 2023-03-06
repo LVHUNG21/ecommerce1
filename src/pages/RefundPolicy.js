@@ -3,8 +3,7 @@ import React from 'react'
 const RefundPolicy = () => {
   return (
   <>
-    <section className="policy-wrapper py-5 home-wrapper-2">
-             <div className="container-xxl">
+    <Container className="policy-wrapper py-5 home-wrapper-2">
                 <div className="row">
                 <div className="col-12">
                     <div className="policy">
@@ -12,8 +11,7 @@ const RefundPolicy = () => {
                     </div>
                 </div>
                 </div>
-             </div>
-        </section>
+        </Container>
   </>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import watch from '../images/watch.jpg';
 import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Container from '../components/Container';
 
 const Cart = () => {
     return (

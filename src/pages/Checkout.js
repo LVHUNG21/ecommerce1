@@ -1,6 +1,7 @@
 import React from 'react'
 import watch from '../images/watch.jpg';
 import { Link } from 'react-router-dom'
+import Container from '../components/Container';
 import { BiArrowBack } from 'react-icons/bi'
 
 const Checkout = () => {

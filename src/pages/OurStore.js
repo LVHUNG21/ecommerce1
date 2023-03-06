@@ -6,6 +6,7 @@ import Meta from '../components/Meta';
 import {Link, getLocation} from 'react-router-dom'
 import ProductCard from '../components/ProductCard';
 import Color from '../components/Color';
+import Container from '../components/Container';
 const OurStore = () => {
     const [grid,setGrid]=useState(4);
     const gridSetter =(i) =>{
@@ -15,8 +16,7 @@ const OurStore = () => {
         <>
             {/* <Meta title= {"OurStore"}/>
   <BreadCrumb title='Our Store'/> */}
-            <div className="store-wrapper home-wrapper-2 py-5">
-                <div className="container-xxl">
+            <Container class1="store-wrapper home-wrapper-2 py-5">
                     <div className="row">
                         <div className="col-3">
 
@@ -188,8 +188,7 @@ const OurStore = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+            </Container>
         </>
     )
 }
