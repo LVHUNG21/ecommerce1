@@ -14,18 +14,21 @@ const Checkout = () => {
                                 <h3 className="website-name">Dev</h3>
                                 <nav style={{ "--bs-breadcrumb-divider:": ">" }} aria-label="breadcrumb">
                                     <ol className="breadcrumb">
-                                        <li className="breadcrumb-item"><Link className="text-dark" to="/cart" href="#">Cart</Link></li>&nbsp;/
-                                        <li className="breadcrumb-item active" aria-current="page">Information</li>&nbsp;
-                                        <li className="breadcrumb-item active">Shipping</li>&nbsp;/
-                                        <li className="breadcrumb-item active" aria-current="page">Payment</li>
+                                        <li className="breadcrumb-item total-price"><Link className="text-dark" to="/cart" href="#">Cart</Link></li>&nbsp;/&nbsp;
+                                        <li className="breadcrumb-item active total-price" aria-current="page">Information</li>&nbsp;
+                                        <li className="breadcrumb-item active total-price">Shipping</li>&nbsp;/
+                                        <li className="breadcrumb-item active total-price" aria-current="page">Payment</li>
                                     </ol>
                                 </nav>
-                                <h4 className="title">
+                                <h4 className="title total">
                                     Contact Information
                                 </h4>
-                                <p className="user-details">
+                                <p className="user-details total">
                                     hun@gmail.com
                                 </p>
+                                <h4 className="mb-3">
+                                    Shipping Address
+                                </h4>
                                 <form action="" className='d-flex gap-15 flex-wrap justify-content-between'>
                                 <div className="w-100">
                                     <select name="" className="form-control form-select" id="">
@@ -76,12 +79,12 @@ const Checkout = () => {
                                         <img className="img-fluid" src={watch} alt="product"/>
                                     </div>
                                     <div>
-                                        <h5 className="title">dsfasdf</h5>
-                                        <p>s/ # fasdfad</p>
+                                        <h5 className="total-price">dsfasdf</h5>
+                                        <p className="total-price">s/ # fasdfad</p>
                                     </div>
                                 </div>
                                 <div className="flex-grow-1">
-                                    <h5 className="">$100</h5>
+                                    <h5 className="total">$100</h5>
 
                                 </div>
                                 </div>
