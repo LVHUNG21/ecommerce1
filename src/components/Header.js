@@ -112,10 +112,10 @@ const Header = () => {
                                         Shop Categories
                                         </span>  
                                         </button>
-                                        <ul class="dropdown-menu">
-                                            <li><Link class="dropdown-item text-white" to="#">Action</Link></li>
-                                            <li><Link class="dropdown-item text-white" to="#">Another action</Link></li>
-                                            <li><Link class="dropdown-item text-white" to="#">Something else here</Link></li>
+                                        <ul className="dropdown-menu">
+                                            <li><Link className="dropdown-item text-white" to="#">Action</Link></li>
+                                            <li><Link className="dropdown-item text-white" to="#">Another action</Link></li>
+                                            <li><Link className="dropdown-item text-white" to="#">Something else here</Link></li>
                                         </ul>
                                     </div>
                                 </div>

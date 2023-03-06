@@ -13,14 +13,14 @@ const ProductCard = (props) => {
     let location = useLocation();
     // alert(location);
     return (
-        <div>
+            <>
             <div className={`${location.pathname == "/store" ? `col-${grid}` : "col-3"}`}>
 
-                <Link to=':id' className="product-card position-relative">
+                <Link to={`${location.pathname=="/" ? "product/:id": location.pathname== "/product/:id" ? "product/:id" :":id"}`} className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
-                        <botton className="border-0 bg-transparent">
+                        <button className="border-0 bg-transparent">
                             <img src={wishlist} alt="wishlist" />
-                        </botton>
+                        </button>
                     </div>
                     <div className="product-image">
                         <img src={watch} className='img-fluid' alt='product image' />
@@ -35,8 +35,8 @@ const ProductCard = (props) => {
                             count={5}
                             // onChange={ratingChanged}
                             size={24}
-                            edit='false'
-                            value='3'
+                            edit={false}
+                            value={3}
 
                             activeColor="#ffd700"
                         />,
@@ -49,26 +49,26 @@ const ProductCard = (props) => {
                     </div>
                     <div className="action-bar position-absolute">
                         <div className="d-flex flex-column gap-15">
-                            <botton className="border-0 bg-transparent">
+                            <button className="border-0 bg-transparent">
                                 <img src={prodcompare} alt='compare' />
-                            </botton>
-                            <botton className="border-0 bg-transparent">
+                            </button>
+                            <button className="border-0 bg-transparent">
                                 <img src={view} alt='view' />
-                            </botton>
-                            <botton className="border-0 bg-transparent">
+                            </button>
+                            <button className="border-0 bg-transparent">
                                 <img src={addcart} alt='addcart' />
-                            </botton>
+                            </button>
                         </div>
                     </div>
                 </Link>
             </div>
-            <div className={`${location.pathname == "/store" ? `col-${grid}` : "col-3"}`}>
+            <div className={`${location.pathname == "/product" ? `col-${grid}` : "col-3"}`}>
 
-                <Link className="product-card position-relative">
+                <Link to={`${location.pathname=="/" ? "product/:id": location.pathname== "/product/:id" ? "product/:id" :":id"}`} className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
-                        <Link>
+                        <button>
                             <img src="images/wish.svg" alt="wishlist" />
-                        </Link>
+                        </button>
                     </div>
                     <div className="product-image">
                         <img src={watch} className='img-fluid' alt='product image' />
@@ -83,8 +83,8 @@ const ProductCard = (props) => {
                             count={5}
                             // onChange={ratingChanged}
                             size={24}
-                            edit='false'
-                            value='3'
+                            edit={false}
+                            value={3}
 
                             activeColor="#ffd700"
                         />,
@@ -96,21 +96,20 @@ const ProductCard = (props) => {
                     </div>
                     <div className="action-bar position-absolute">
                         <div className="d-flex flex-column gap-15">
-                            <botton className="border-0 bg-transparent">
+                            <button className="border-0 bg-transparent">
                                 <img src={prodcompare} alt='compare' />
-                            </botton>
-                            <botton className="border-0 bg-transparent">
+                            </button>
+                            <button className="border-0 bg-transparent">
                                 <img src={view} alt='view' />
-                            </botton>
-                            <botton className="border-0 bg-transparent">
+                            </button>
+                            <button className="border-0 bg-transparent">
                                 <img src={addcart} alt='addcart' />
-                            </botton>
+                            </button>
                         </div>
                     </div>
                 </Link>
             </div>
-        </div>
-
+            </>
     )
 }
 

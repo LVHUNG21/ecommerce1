@@ -44,7 +44,7 @@ const Footer = () => {
                   <a href='tel:+032423' className='mt-3 d-block mb-1 text-white'>+03423423</a>
                   <a href='mailto:hunga37732@gmail.com' className='mt-2 d-block mb-0 text-white'>hunga37732@gmail.com</a>
               <div className="social_icons d-flex align-items-center gap-30 mt-4">
-                <a calssName='text-white' href='#'><BsGithub className='fs-4'/></a>
+                <a className='text-white' href='#'><BsGithub className='fs-4'/></a>
                 <a className='text-white' href='#'><BsInstagram className='fs-4'/></a>
                 <a className='text-white' href='#'><BsYoutube className='fs-4'/></a>
                 <a className='text-white' href='#'><BsLinkedin className='fs-4'/></a>
@@ -87,7 +87,7 @@ const Footer = () => {
       </footer>
       <footer className='py-4'>
         <div className='container-xxl'>
-          <div row>
+          <div className='row'>
             <div className='col-12'>
               <p className='text-center mb-0 text-white'> &copy;
                 {new Date().getFullYear()};Powered by Developer's Corner('')
