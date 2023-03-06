@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ReactImageZoom from 'react-image-zoom';
+import ReactStars from 'react-rating-stars-component';
 import { TbGitCompare } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
 import ProductCard from '../components/ProductCard'
 import watch from "../images/watch.jpg"
 import Container from '../components/Container';
+import Color from '../components/Color';
 
 const SingleProduct = () => {
-    const props = { width: 400, height: 250, zoomWidth: 600, img: "images/watch.jpg" };
+    const props = { width: 400, height: 500, zoomWidth: 500, img: 'https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&amp;dl=pexels-fernando-arcos-190819.jpg../images/headphone.jpg' };
 
     const [orderedProduct, setorderProduct] = useState(true);
     const copyToClipboard = (text) => {
@@ -31,13 +33,12 @@ const SingleProduct = () => {
                                 </div>
                             </div>
                             <div className="other-product-images d-flex flex-wrap gap-15">
-                                <div><img src="images/watch" alt="" className='img-fluid' /></div>
-                                <div><img src="images/watch" alt="" className='img-fluid' /></div>
-                                <div><img src="images/watch" alt="" className='img-fluid' /></div>
-                                <div><img src="images/watch" alt="" className='img-fluid' /></div>
+                                <div><img src={watch} alt="" className='img-fluid' /></div>
+                                <div><img src={watch} alt="" className='img-fluid' /></div>
+                                <div><img src={watch} alt="" className='img-fluid' /></div>
+                                <div><img src={watch} alt="" className='img-fluid' /></div>
                             </div>
                         </div>
-                    </div>
                     <div className="col-6">
                         <div className="main-product-details">
                             <div className="border-bottom">
@@ -55,8 +56,8 @@ const SingleProduct = () => {
                                         count={5}
                                         // onChange={ratingChanged}
                                         size={24}
-                                        edit='false'
-                                        value='3'
+                                        edit={false}
+                                        value={3}
 
                                         activeColor="#ffd700"
                                     />,
@@ -106,7 +107,7 @@ const SingleProduct = () => {
                                             <input type="number" className='form-control' name="" style={{ "width": "70px" }} min={1} max={10} id="" />
                                         </div>
                                         <div className='d-flex align-items-center gap-30 ms-5'>
-                                            <button className='botton border-0' type='submit'>
+                                            <button className='button border-0' type='submit'>
                                                 Add to Cart
                                             </button>
                                             <button className='button singup'>
@@ -134,6 +135,7 @@ const SingleProduct = () => {
                             </div>
                         </div>
                     </div>
+                    </div>
                 </Container>
                 <Container class1="description-wrapper py-5 home-wrapper-2">
                         <div className="row">
@@ -158,8 +160,8 @@ const SingleProduct = () => {
                                                     count={5}
                                                     // onChange={ratingChanged}
                                                     size={24}
-                                                    edit='false'
-                                                    value='3'
+                                                    edit={false}
+                                                    value={3}
 
                                                     activeColor="#ffd700"
                                                 />,
@@ -183,8 +185,8 @@ const SingleProduct = () => {
                                                     count={5}
                                                     // onChange={ratingChanged}
                                                     size={24}
-                                                    edit='true'
-                                                    value='3'
+                                                    edit={false}
+                                                    value={3}
 
                                                     activeColor="#ffd700"
                                                 />,
@@ -211,8 +213,8 @@ const SingleProduct = () => {
                                                     count={5}
                                                     // onChange={ratingChanged}
                                                     size={24}
-                                                    edit='false'
-                                                    value='3'
+                                                    edit={false}
+                                                    value={3}
 
                                                     activeColor="#ffd700"
                                                 />,

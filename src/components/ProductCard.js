@@ -5,7 +5,7 @@ import prodcompare from "../images/prodcompare.svg";
 import wish from '../images/wish.svg';
 import wishlist from '../images/wishlist.svg'
 import watch from '../images/watch.jpg'
-import watch2 from '../images/watch.jpg';
+import watch2 from '../images/watchrl.jpg';
 import addcart from '../images/add-cart.svg';
 import view from '../images/view.svg';
 const ProductCard = (props) => {
@@ -19,7 +19,7 @@ const ProductCard = (props) => {
                 <Link to={`${location.pathname=="/" ? "product/:id": location.pathname== "/product/:id" ? "product/:id" :":id"}`} className="product-card position-relative">
                     <div className="wishlist-icon position-absolute">
                         <button className="border-0 bg-transparent">
-                            <img src={wishlist} alt="wishlist" />
+                            <img src={wish} alt="wishlist" />
                         </button>
                     </div>
                     <div className="product-image">
@@ -96,7 +96,7 @@ const ProductCard = (props) => {
                     </div>
                     <div className="action-bar position-absolute">
                         <div className="d-flex flex-column gap-15">
-                            <button className="border-0 bg-transparent">
+                            <button  className="border-0 bg-transparent">
                                 <img src={prodcompare} alt='compare' />
                             </button>
                             <button className="border-0 bg-transparent">

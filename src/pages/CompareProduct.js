@@ -13,7 +13,7 @@ const CompareProduct = () => {
                 <img src="images/watch.jpg" alt ="watch"/> 
                 </div>
                 <div className="compare-product-details">
-                    <h5 className="title">Nokia</h5>
+                    <h5 className="title">Sản phẩm đồng hồ mang thương hiệu MVW với nhiều mẫu mã năng động, trẻ trung nhưng không kém phần tinh tế và sang trọng.</h5>
                     <h6 className="price mb-3 mt-3">$100</h6>
                     <div>
                         <div className='product-detail'>
@@ -47,13 +47,15 @@ const CompareProduct = () => {
 
                 </div>
             </div>
+        </div>
+        <div className="col-3">
             <div className="compare-product-card position-relative">
                 <img src="images/cross.svg" alt="cross" className="position-absolute cross img-fluid" />
                 <div className="product-card-image">
                 <img src="images/watch.jpg" alt ="watch"/> 
                 </div>
                 <div className="compare-product-details">
-                    <h5 className="title">Nokia</h5>
+                    <h5 className="title">Sản phẩm đồng hồ mang thương hiệu MVW với nhiều mẫu mã năng động, trẻ trung nhưng không kém phần tinh tế và sang trọng.</h5>
                     <h6 className="price mb-3 mt-3">$100</h6>
                     <div>
                         <div className='product-detail'>

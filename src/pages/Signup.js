@@ -16,8 +16,8 @@ const Signup = () => {
                         <CustomInput type="tel" name='mobile' placeholder='Moblie number'/>
                         <CustomInput type="password" name='password' placeholder='password'/>
                         <div>
-                            <div className='mt-3 d-flex jusitfy-content-center gap-15 align-items-center'>
-                                <button className='botton border-0'>
+                            <div className='mt-3 d-flex justify-content-center gap-15 align-items-center'>
+                                <button className='button border-0'>
                                    Sign Up 
                                 </button>
                                  

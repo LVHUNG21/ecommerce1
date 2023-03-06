@@ -16,11 +16,11 @@ const Home = () => {
             <div className="main-banner position-relative p-3">
               <img src='images/main-banner.jpg' className='img-fluid rouned-3' alt='main banner' />
               <div className="main-banner-content position-absolute">
-                <h4>SUPERCHARED FOR PROS</h4>
-                <h5>
+                <h4 >SUPERCHARED FOR PROS</h4>
+                <h5 >
                   Ipad S13+ Pre
                 </h5>
-                <p>From $999.99 or $100/mo.</p>
+                <p >From $999.99 or $100/mo.</p>
                 <Link className='button'>BUY NOW</Link>
               </div>
             </div>
@@ -175,13 +175,13 @@ const Home = () => {
             <div className="famous-card position-relative">
               <img src='images/subbanner-01.webp' className='img-fluid' alt="famous"></img>
               <div className="famous-content position-absolute">
-                <h5 className='text-dark'>
+                <h5>
                   BigScreen
                 </h5>
-                <h6 className='text-dark'>
+                <h6>
                   Smart watch Series 7
                 </h6>
-                <p className='text-dark'>
+                <p>
                   From $399 or $16.62/mo. for 24 mo
                 </p>
               </div>
@@ -224,7 +224,7 @@ const Home = () => {
               <img src='images/subbanner-04.webp' className="img-fluid" alt="famous"></img>
               <div className="famous-content position-absolute">
                 <h5 className='text-dark'>
-                  BigScreen
+                Home Speaker
                 </h5>
                 <h6 className='text-dark'>
                   Smart watch Series 7
