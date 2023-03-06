@@ -145,7 +145,7 @@ const SingleProduct = () => {
                                     <p> sdfsdfsdfskdfhkjsdhfklshfkl</p>
                                 </div>
                             </div>
-                        </div>
+                       </div>
                 </Container>
                 <Container id="reivew" class1="reviews-wrapper home-wrapper-2">
                         <div className="row">
