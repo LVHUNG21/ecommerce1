@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 const Resetpassword = () => {
     return (
         <>
-            <div className="login-wrapper  py-5 home-wrapper-2">
-                <div className="container-xxl">
+            <Container class1="login-wrapper  py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
                         <div className="auth-card">
@@ -30,8 +29,7 @@ const Resetpassword = () => {
                     </div>
                 </div>
 
-            </div>
-            </div>
+            </Container>
         </>
     )
 }

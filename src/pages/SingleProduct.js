@@ -21,8 +21,7 @@ const SingleProduct = () => {
       }
     return (
         <>
-            <div className="main-product-wrapper py-5 home-wrapper-2">
-                <div className="container-xxl">
+            <Container  class1="main-product-wrapper py-5 home-wrapper-2">
                     <div className="row">
                         <div className="col-6">
                             <div className="main-product-image">
@@ -134,9 +133,8 @@ const SingleProduct = () => {
                             </div>
                         </div>
                     </div>
-                </div >
-                <div className="description-wrapper py-5 home-wrapper-2">
-                    <div className="container-xxl">
+                </Container>
+                <Container class1="description-wrapper py-5 home-wrapper-2">
                         <div className="row">
                             <div className="col-12">
                                 <h4 className="Description"></h4>
@@ -145,10 +143,8 @@ const SingleProduct = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <section id="reivew" className="reviews-wrapper home-wrapper-2">
-                    <div className="container-xxl">
+                </Container>
+                <Container id="reivew" class1="reviews-wrapper home-wrapper-2">
                         <div className="row">
                             <div className="col-12">
                                 <h3 id="reivew" >Reviews</h3>
@@ -227,10 +223,8 @@ const SingleProduct = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <section className="featured-wrapper py-5 home-wrapper-2">
-                    <div className="container-xxl">
+                </Container>
+                <Container class1="featured-wrapper py-5 home-wrapper-2">
                         <div className="row">
                             <div className="col-12">
                                 <h3 className="section-heading">Featured Collection</h3>
@@ -239,10 +233,8 @@ const SingleProduct = () => {
                             <ProductCard />
                             <ProductCard />
                             <ProductCard />
-                        </div>
                     </div>
-                </section>
-            </div >
+                </Container>
         </>
     )
 }

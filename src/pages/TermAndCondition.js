@@ -3,8 +3,7 @@ import React from 'react'
 const TermAndCondition = () => {
   return (
   <>
-        <section className="policy-wrapper py-5 home-wrapper-2">
-             <div className="container-xxl">
+        <Container class1="policy-wrapper py-5 home-wrapper-2">
                 <div className="row">
                 <div className="col-12">
                     <div className="policy">
@@ -12,8 +11,7 @@ const TermAndCondition = () => {
                     </div>
                 </div>
                 </div>
-             </div>
-        </section>
+        </Container >
   </>
   )
 }
