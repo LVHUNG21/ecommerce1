@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import CustomInput from './CustomInput'
 import {InboxOutlined} from "@ant-design/icons"
 import ReactQuill from 'react-quill';
-import { Upload } from 'antd';
+import { Upload ,message} from 'antd';
 import "react-quill/dist/quill.snow.css";
 const { Dragger } = Upload;
 const props = {

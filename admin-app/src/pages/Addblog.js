@@ -1,8 +1,10 @@
 import {React,useSate} from 'react'
 import CustomInput from './CustomInput'
 import ReactQuill from 'react-quill';
+import {InboxOutlined} from "@ant-design/icons"
 // import "react-quill/dist/quill.snow.css"
 // import { Stepper } from 'react-form-stepper';
+
 import { message, Upload } from 'antd';
 const { Dragger } = Upload;
 const props = {
@@ -33,10 +35,7 @@ const Addblog = () => {
     }
     return (
         <div><h3 className="mb-4 title">Add Blog</h3>
-            <Stepper
-                steps={[{ label: 'Add blog details' }, { label: 'Upload Image' }, { label: 'finish' }]}
-                activeStep={2}
-            />
+            
             <div className=''>
                 <form action="">
                     <Dragger {...props}>
