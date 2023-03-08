@@ -1,6 +1,6 @@
 const Category=require('../models/blogcatmodel.js');
 const asyncHandler=require("express-async-handler");
-const validateMongoDbId=require('../utils/validateMongoDbId');
+const validateMongoDbId=require('../untils/validateMongodbId');
 
 const createCategory=asyncHandler(async(req,res)=>{
     try{
@@ -57,4 +57,4 @@ const getallCategory=asyncHandler(async(req,res)=>{
     }
 })
 
-module.export={createCategory,updateCategory,deleteCategory,getCategory};
+module.exports={createCategory,updateCategory,deleteCategory,getCategory,getallCategory};

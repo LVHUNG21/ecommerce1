@@ -5,10 +5,11 @@ const asyncHandler=require("express-async-handler")
 const dbConnect = require('./config/dbConnect');
 const ProductModel = require('./models/ ProductModel');
 const app=express();
+const {errorHandler,notFound}=require('./middlewares/errorHandler')
 const dotenv=require('dotenv').config();
 const authRouter=require('./routes/authRoute');
 const blogRouter=require('./routes/blogRoute');
-const productRouter=require('./routes/ProductRoute');
+const productRouter=require('./routes/productRouter');
 const categoryRouter=require('./routes/categoryRoute');
 const blogcatRouter=require('./routes/blogcatRoute');
 const brandRouter=require('./routes/brandRoute');
@@ -26,7 +27,7 @@ app.use('/api/product',productRouter);
 app.use('/api/category',categoryRouter);
 app.use('api/blogcategory',blogcatRouter);
 app.use('/api/brand',brandRouter);
-app.use('/api/coupon',);
+app.use('/api/coupon',couponRouter);
 app.use(notFound);
 app.use(errorHandler);
 

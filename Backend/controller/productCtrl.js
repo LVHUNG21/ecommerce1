@@ -1,8 +1,8 @@
-const Product = require("../models/ProductModel");
+const Product = require("../models/ ProductModel");
 const slugify = require("slugify");
 const asyncHandler=require("express-async-handler");
-const validateMongoDbId=require("../utils/validateMongoDbId")
-const cloundinaryUploadImage=require('../utils/cloudinary')
+const validateMongoDbId=require("../untils/validateMongodbId")
+const cloundinaryUploadImg=require('../untils/cloundinary')
 const fs=require('fs');
 const createProduct = asyncHandler(async (req, res) => {
     try {
@@ -26,6 +26,7 @@ const updateProduct = asyncHandler(async (req, res) => {
         const updateProduct = await Product.findOneAndUpdate({ id }, req.body, {
             new: true,
         });
+        res.json(updateProduct);
     } catch (error) {
         throw new Error(error);
 
@@ -35,7 +36,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
     const id = req.params;
     try {
-        const updateProduct = await Product.findOneAndDelete(id);
+        const deleteProduct = await Product.findOneAndDelete(id);
         res.json(deleteProduct);
     } catch (error) {
         throw new Error(error);
@@ -181,7 +182,7 @@ const uploadImages=asyncHandler(async(req,res)=>{
     const {id}=req.params;
     validateMongoDbId(id);
     try{
-        const uploader=(path)=> cloundinaryUploadImage(path,"images");
+        const uploader=(path)=> cloundinaryUploadImg(path,"images");
         const urls=[];
         const files=req.files;
         for(const file of file){

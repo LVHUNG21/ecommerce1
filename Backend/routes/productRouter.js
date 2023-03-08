@@ -1,18 +1,17 @@
-const {createProduct,getaProduct,getallProduct,rating,updateProduct,addToWishlist,updatePassword,uploadImages,deleteProduct}=require("../controller/productCtrl");
-const {isAdmin,authMiddlewares,e}=require("../middlewares/authMiddleware");
+const {createProduct,getaProduct,getallProduct,rating,updateProduct,addToWishlist,uploadImages,deleteProduct}=require("../controller/productCtrl");
+const {isAdmin,authMiddleware}=require("../middlewares/authMiddleware");
 const express = require("express");
 const { uploadPhoto, productImgResize } = require("../middlewares/uploadimages");
 const router=express.Router();
 
-router.put("/password",authMiddleware,updatePassword);
 router.put("/upload/:id",authMiddleware,isAdmin,uploadPhoto.array('images',10),productImgResize,uploadImages);
-router.put("/upload/:id",authMiddleware,isAdmin,uploadPhoto);
-router.post('/',authMiddlewares,isAdmin,createProduct);
+// router.put("/upload/:id",authMiddleware,isAdmin,uploadPhoto);
+router.post('/',authMiddleware,isAdmin,createProduct);
 router.get('/:id',getaProduct);
-router.put('/wishlist',authMiddlewares,isAdmin,addToWishlist);
-router.put('/rating',authMiddlewares,isAdmin,rating);
+router.put('/wishlist',authMiddleware,isAdmin,addToWishlist);
+router.put('/rating',authMiddleware,isAdmin,rating);
 router.get('/',getallProduct);
-router.put('/:id',authMiddlewares,isAdmin,updateProduct);
-router.delete("/:id",authMiddlewares,isAdmin,deleteProduct)
+router.put('/:id',authMiddleware,isAdmin,updateProduct);
+router.delete("/:id",authMiddleware,isAdmin,deleteProduct)
 
 module.exports=router;

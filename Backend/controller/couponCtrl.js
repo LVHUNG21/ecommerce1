@@ -1,5 +1,5 @@
 const Coupon=require("../models/couponModel");
-const validateMongoDbId=require("../utils/validateMongodbId");
+const validateMongoDbId=require("../untils/validateMongodbId");
 
 const asyncHandler=require("express-async-handler");
  

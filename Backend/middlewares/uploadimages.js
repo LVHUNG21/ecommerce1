@@ -21,7 +21,7 @@ const multerFilter=(req,file,cd)=>{
             message:"Unsupported file format"
         },false)
     }
-}
+};
 const uploadPhoto=multer({
     storage:multerStorage,
     fileFilter:multerFilter,

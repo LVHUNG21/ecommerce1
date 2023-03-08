@@ -1,6 +1,6 @@
 const Brand=require('../models/brandModel');
 const asyncHandler=require("express-async-handler");
-const validateMongoDbId=require('../utils/validateMongoDbId');
+const validateMongoDbId=require('../untils/validateMongodbId');
 
 const createBrand=asyncHandler(async(req,res)=>{
     try{
@@ -57,4 +57,4 @@ const getallBrand=asyncHandler(async(req,res)=>{
     }
 })
 
-module.export={createBrand,updateBrand,deleteBrand,getBrand};
+module.exports={createBrand,updateBrand,deleteBrand,getBrand,getallBrand};

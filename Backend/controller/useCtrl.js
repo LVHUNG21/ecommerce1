@@ -452,4 +452,4 @@ const updateOrderStatus=asyncHandler(async(req,res)=>{
         throw new Error(error);
     }
 })
-module.exports = {createOrder,applyCoupon,emptyCart, createUser,getWishlist, userCart,loginAdmin,saveAddress,loginUserCtrl, getallUser, getaUser, deleteaUser, updatedaUser, blockUser,forgotPasswordToken, unblockUser,refreshToken,logout,updatePassword,forgotPasswordToken,resetPassword,getUserCart,getOrders,updateOrderStatus};
+module.exports = {createOrder,applyCoupon,emptyCart, createUser,getWishlist, userCart,loginAdmin,saveAddress,loginUserCtrl, getallUser, getaUser, deleteaUser, updatedaUser, blockUser,forgotPasswordToken, unblockUser,handleRefreshToken,logout,updatePassword,forgotPasswordToken,resetPassword,getUserCart,getOrders,updateOrderStatus};
