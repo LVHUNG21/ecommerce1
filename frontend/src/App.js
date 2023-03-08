@@ -20,7 +20,7 @@ import ShippingPolicy from './pages/ShippingPolicy';
 import TermAndCondition from './pages/TermAndCondition';
 import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
-import Enquiries from '../admin-app/src/pages/enquiries';
+
 import Checkout from './pages/Checkout';
 function App() {
   return( 
