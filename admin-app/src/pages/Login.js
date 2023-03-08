@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomInput from '../component/CustomInput';
+import CustomInput from './CustomInput';
 import {Link} from 'react-router-dom';
 const Login = () => {
   return (
@@ -10,7 +10,7 @@ const Login = () => {
         <br/>
         <br/>
         <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
-            <h3 className="text-center">Login</h3>
+            <h3 className="text-center title">Login</h3>
             <p className="text-center">Login to your account to continue</p>
             <form action="">
                <CustomInput type="text" label="Email Address" id="email"/>

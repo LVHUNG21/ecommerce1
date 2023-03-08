@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import CustomInput from '../component/CustomInput';
+import CustomInput from './CustomInput';
 
 const Resetpassword= () => {
 

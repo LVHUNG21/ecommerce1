@@ -7,7 +7,7 @@ const CustomInput = (props) => {
     <input type="email" className={`form-control ${i_class}`}
      id= {i_id}
      placeholder={label}/>
-    <label for={label}>{label}</label>
+    <label htmlFor={label}>{label}</label>
   </div>
   ); 
 }
