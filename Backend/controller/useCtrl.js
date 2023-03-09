@@ -19,7 +19,6 @@ const createUser = async (req, res) => {
 
     } else {
         throw new Error("user already exits");
-
     }
 };
 const loginUserCtrl = asyncHandler(async (req, res) => {
@@ -27,7 +26,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
     console.log(email, password);
     // check if user exists or not
     const findUser = await User.findOne({ email });
-    if (findUser && (await findUser.isPasswordMatcheed(password))) {
+    if (findUser && (await findUser.isPasswordMatched(password))) {
         const refreshToken= await generateRefreshToken(findUser?._id);
 
         const updateuser=await User.findByIdAndUpdate(findUser.id,

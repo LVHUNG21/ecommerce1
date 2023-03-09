@@ -1,6 +1,9 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import authService from './authService';
 
+const getUserfromLocalStorage=localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')): null;
+
+
 const userDefaultState={
     _id:null,
     firstname:null,
@@ -11,7 +14,7 @@ const userDefaultState={
 }
 
 const initialState={
-    user:userDefaultState,
+    user:getUserfromLocalStorage,
     isError:false,
     isLoading:false,
     isSuccess:false,
@@ -47,4 +50,4 @@ export const authSlide=createSlice({
         })
     },
 })
-export default authSlide.reducers;
+export default authSlide.reducer;

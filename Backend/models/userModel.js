@@ -30,7 +30,7 @@ var userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    isAdmin:{
+    role:{
         type:String,
         default:"user",
     },
@@ -66,7 +66,7 @@ userSchema.pre('save',async function(next){
     this.password= await bcrypt.hash(this.password,salt);
 }
 );
-userSchema.method.isPasswordMatched= async function(enteredPassword){
+userSchema.methods.isPasswordMatched= async function(enteredPassword){
     return await bcrypt.compare(enteredPassword,this.password )
 }
 userSchema.methods.createPasswordResetToken=async function(){
@@ -74,7 +74,7 @@ userSchema.methods.createPasswordResetToken=async function(){
     this.passwordResetToken=crypto.createHash("sha256").update(resettoken).digest('hex');
     this.passwordResetExpires=Date.now()+30*60*1000;//10minutes
     return resettoken;
-    return resettoken;
+   
 
 }
 

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Table} from "antd";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../features/customer/customerSlide';
 const columns = [
     {
       title: 'Sno',
@@ -8,26 +10,36 @@ const columns = [
     {
       title: 'Name',
       dataIndex: 'name',
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-      title: 'Product',
-      dataIndex: 'product',
+      title: 'Email',
+      dataIndex: 'email',
     },
     {
-        title: 'Status',
-        dataIndex: 'status',
+        title: 'Moblie',
+        dataIndex: 'mobile',
       },
   ];
+
+const Customers = () => {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(getUser())
+  })
+  const customerstate=useSelector((state)=>state.customer.customers)
   const data1 = [];
-  for (let i = 0; i < 46; i++) {
+  for (let i = 0; i < customerstate.length; i++) {
+    if(customerstate[i].role !== "admin"){
     data1.push({
       key: i,
-      name: `Edward King ${i}`,
-      product: 32,
-      address: `London, Park Lane no. ${i}`,
+      name:customerstate[i].firstname + "" +customerstate[i].lastname,
+      email: customerstate[i].email,
+      mobile:customerstate[i].mobile,
     });
   }
-const Customers = () => {
+  }
+  const {data}=customerstate;
   return (
     <div>
     <h3 className="mb-4 title">Customers</h3>

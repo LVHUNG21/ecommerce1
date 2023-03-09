@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import CustomInput from './CustomInput';
 import { Link } from 'react-router-dom';
-import { useFormik, yupToFormErrors } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSelector,useDispatch } from 'react-redux';
 import { login } from '../features/auth/authSlide';
 const Login = () => {
+  
   const dispatch=useDispatch();
+  const navigate=useNavigate();
   let userSchema = Yup.object({
     email: Yup.string().email("Moi nhap dung email").required("Email is Required"),
     password: Yup.string().required("Password is Required")
@@ -22,6 +25,17 @@ const Login = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  const {user,isLoading,isError,isSuccess,message}=useSelector(
+    (state)=>state.auth
+  );
+  useEffect(()=>{
+    if(!user==null || isSuccess)
+    {
+    navigate('admin');
+    }else{
+    navigate('');
+    }
+  },[user,isLoading, isError,isSuccess,message]);
   return (
     <div className='py-5' style={{ backgroud: "#ffd333", minHeight: "100" }}>
       <br />
