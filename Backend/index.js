@@ -14,15 +14,16 @@ const categoryRouter=require('./routes/categoryRoute');
 const blogcatRouter=require('./routes/blogcatRoute');
 const brandRouter=require('./routes/brandRoute');
 const couponRouter=require('./routes/couponRoute');
-dbConnect();
+
 const cors=require('cors')
 const morgan=require("morgan");
 const PORT =process.env.PORT || 4000;
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 app.use(morgan());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cookieParser());
+dbConnect();
 app.use("/api/blog",blogRouter);
 app.use('/api/user',authRouter);
 app.use('/api/product',productRouter);
