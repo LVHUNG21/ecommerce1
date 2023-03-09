@@ -32,7 +32,6 @@ app.use('/api/brand',brandRouter);
 app.use('/api/coupon',couponRouter);
 app.use(notFound);
 app.use(errorHandler);
-
 app.listen(PORT,()=>{
     console.log(`Server is running at PORT ${PORT}`);
 
