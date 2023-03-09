@@ -25,7 +25,7 @@ function App() {
   return (
   <Router>
     <Routes>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/" element={<Login/>}/>
       <Route path="/reset-password" element={<Resetpassword/>}/>
       <Route path="/forgot-password" element={<Forgotpassword/>}/>
       <Route path='/admin' element={<MainLayout/>}>

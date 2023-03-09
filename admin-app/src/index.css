@@ -28,6 +28,10 @@ body{
   width:250px !important;
 
 }
+.error{
+  color:red;
+  font-size:12px;
+}
 .lg-logo{
  transition: 0.3s; 
 }
