@@ -32,7 +32,7 @@ export const customerSlide=createSlice({
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
-            state.message=acion.error;
+            state.message=action.error;
         })
     },
 })

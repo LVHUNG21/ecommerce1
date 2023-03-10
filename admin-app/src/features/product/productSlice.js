@@ -1,9 +1,9 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import productService from "./productService";
-
-export const getUser=createAsyncThunk('product/get-products',async(thunkAPI)=>{
+// import getProducts from "../features/product/productService";
+export const getProduct=createAsyncThunk('product/get-products',async(thunkAPI)=>{
     try{
-        return await productService.getUsers();
+        return await productService.getProducts();
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
@@ -15,24 +15,24 @@ const initialState={
     isSuccess:false,
     message:"",
 };
-export const productSlide=createSlice({
+export const productSlice=createSlice({
     name:'user',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.addCase(getProducts.pending,(state)=>{
+        builder.addCase(getProduct.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getProducts.fulfilled,(state,action)=>{
+        }).addCase(getProduct.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=false;
             state.products=action.payload;
-        }).addCase(getProducts.rejected,(state,action)=>{
+        }).addCase(getProduct.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
-            state.message=acion.error;
+            state.message=action.error;
         })
     },
 })
-export default productSlide.reducer;
+export default productSlice.reducer;

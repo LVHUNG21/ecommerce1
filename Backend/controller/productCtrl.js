@@ -64,10 +64,10 @@ const getallProduct = asyncHandler(async (req, res) => {
         excludeFields.forEach((el) => delete queryObj[el]);
         console.log(queryObj);
 
-        let queryStr = Json.stringify(queryObj);
+        let queryStr = JSON.stringify(queryObj);
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
-        const query = Product.find(JSON.parse(queryStr));
+        let query = Product.find(JSON.parse(queryStr));
 
         //Sorting
         if (req.query.sort) {
@@ -100,6 +100,7 @@ const getallProduct = asyncHandler(async (req, res) => {
         // const getallProduct=await Product.where("category").equals(req.query.category );
         // res.json(getallProduct);
     } catch (error) {
+        console.log('error backend pctrl')
         throw new Error(error);
     }
 });
