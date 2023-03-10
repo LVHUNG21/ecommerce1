@@ -5,6 +5,7 @@ const asyncHandler=require("express-async-handler")
 const dbConnect = require('./config/dbConnect');
 const ProductModel = require('./models/ ProductModel');
 const app=express();
+
 const {errorHandler,notFound}=require('./middlewares/errorHandler')
 const dotenv=require('dotenv').config();
 const authRouter=require('./routes/authRoute');
@@ -18,13 +19,16 @@ const couponRouter=require('./routes/couponRoute');
 const cors=require('cors')
 const morgan=require("morgan");
 const PORT =process.env.PORT || 4000;
-app.use(bodyParser.json());
+// app.use(express.json());
 app.use(morgan());
 app.use(cors());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 dbConnect();
 app.use("/api/blog",blogRouter);
+
 app.use('/api/user',authRouter);
 app.use('/api/product',productRouter);
 app.use('/api/category',categoryRouter);

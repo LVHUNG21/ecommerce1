@@ -299,8 +299,11 @@ const saveAddress=asyncHandler(async(req,res,next)=>{
 })
 
 const userCart=asyncHandler(async(req,res,next)=>{
- const {cart}=req.body
- const {_id}=req.user;
+
+    const {_id}=req?.user || {};
+    console.log(_id);
+    const {cart}=req.body
+
  validateMongodbId(_id);
  try{
     let products=[];
@@ -329,7 +332,7 @@ const userCart=asyncHandler(async(req,res,next)=>{
         products,cartTotal,orderby:user?._id
     }).save();
     res.json(newCart);
-    console.log(products);
+    // console.log(products);
  }catch(error){
     console.log('error cart backedn');
     throw new Error(error);
@@ -437,7 +440,7 @@ const getOrders=asyncHandler(async(req,res)=>{
 const updateOrderStatus=asyncHandler(async(req,res)=>{
     const {status}=req.body;
     const {id}=req.params;
-    validateMongoDbId(id);
+    validateMongodbId(id);
     try{
     const updateOrderStatus=await Order.findByIdAndUpdate(
         id,
