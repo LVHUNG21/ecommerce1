@@ -16,7 +16,7 @@ const initialState={
     message:"",
 };
 export const productSlice=createSlice({
-    name:'user',
+    name:'products',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{

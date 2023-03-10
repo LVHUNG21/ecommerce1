@@ -5,7 +5,7 @@ const DB='mongodb+srv://hung:12345@cluster0.aongnbk.mongodb.net/?retryWrites=tru
 // mongoose.connect(DB,{}).then(()=>console.log('Connect is Successfully done')).console.log('Error connect db' + error.message)
 const dbConnect =() =>{
     try{
-        const conn=mongoose.connect(process.env.MONGODB_URL);
+        const conn=mongoose.connect(DB);
         console.log('Database connected Successfully');
     }catch(error){
         console.log('Database error ket noi database ')

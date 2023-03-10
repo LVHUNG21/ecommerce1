@@ -136,6 +136,7 @@ const getallUser = asyncHandler(async (req, res) => {
         const getUsers = await User.find();
         res.json(getUsers);
     } catch (error) {
+        console.log('getall user error backedn')
         throw new Error(error);
     }
 }
