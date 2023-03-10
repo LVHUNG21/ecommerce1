@@ -16,12 +16,8 @@ const columns = [
       dataIndex: 'name',
     },
     {
-      title: 'Product',
-      dataIndex: 'product',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
+        title: 'Action',
+        dataIndex: 'action',
       },
   ];
 const Brandlist= () => {
@@ -32,7 +28,7 @@ const Brandlist= () => {
   for (let i = 0; i < brandState.length; i++) {
     data1.push({
       key: i+1,
-      name: brandState[i],
+      name: brandState[i].title,
       action:(<>
         <Link to='/' className='fs-3 text-danger'>
             <BiEdit/>
@@ -43,7 +39,7 @@ const Brandlist= () => {
         </>)
   
       });
-    };
+    }
   return (
     <div>
     <h3 className="mb-4 title">Brandlist</h3>

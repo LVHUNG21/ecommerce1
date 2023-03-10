@@ -8,6 +8,7 @@ const Order=require('../models/orderModel');
 const asyncHandler=require("express-async-handler");
 const Coupon=require("../models/couponModel"); 
 const crypto=require("crypto");
+const validateMongodbId=require('../untils/validateMongodbId')
 const jwt=require("jsonwebtoken");
 
 const createUser = async (req, res) => {
@@ -58,8 +59,8 @@ const loginAdmin= asyncHandler(async (req, res) => {
     console.log(email, password);
     // check if user exists or not
     const findAdmin = await User.findOne({ email });
-    if(findAdmin.role!=='admin') throw Error("not authorised");
-    if (findAdmin && (await findAdmin.isPasswordMatcheed(password))) {
+    if(findAdmin?.role!== 'admin') {throw Error("You khong phai la Admin ")};
+    if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
         const refreshToken= await generateRefreshToken(findAdmin?._id);
 
         const updateuser=await User.findByIdAndUpdate(findAdmin.id,
@@ -78,10 +79,11 @@ const loginAdmin= asyncHandler(async (req, res) => {
             lastname: findAdmin?.lastname,
             email: findAdmin?.email,
             mobile: findAdmin?.mobile,
-            token: generateToken(findUser?._id),
+            token: generateToken(findAdmin?._id),
 
         });
     } else {
+        console.log('error login backend');
         throw new Error("Invalid Credentials");
     }
 });
@@ -297,7 +299,7 @@ const saveAddress=asyncHandler(async(req,res,next)=>{
 })
 
 const userCart=asyncHandler(async(req,res,next)=>{
- const {cart}=req.body;
+ const {cart}=req.body
  const {_id}=req.user;
  validateMongodbId(_id);
  try{
@@ -321,14 +323,15 @@ const userCart=asyncHandler(async(req,res,next)=>{
     }
     let cartTotal=0;
     for(let i=0;i<products.length;i++){
-        cartTotal=cartTotal+products[i].price+products[i].count;
+        cartTotal=cartTotal+products[i].price*products[i].count;
     }
     let newCart=await new Cart({
         products,cartTotal,orderby:user?._id
     }).save();
     res.json(newCart);
-
+    console.log(products);
  }catch(error){
+    console.log('error cart backedn');
     throw new Error(error);
  }
 });

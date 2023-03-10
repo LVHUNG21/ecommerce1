@@ -20,9 +20,9 @@ const Login = () => {
       password: '',
     },
     validationSchema:userSchema,
-    onSubmit: values => {
+    onSubmit: (values) => {
       dispatch(login(values));
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   const {user,isLoading,isError,isSuccess,message}=useSelector(
@@ -33,6 +33,7 @@ const Login = () => {
     {
     navigate('admin');
     }else{
+    alert("Ban khong phai laf Admin");
     navigate('');
     }
   },[user,isLoading, isError,isSuccess,message]);
@@ -47,14 +48,14 @@ const Login = () => {
         <h3 className="text-center title">Login</h3>
         <p className="text-center">Login to your account to continue</p>
         <form action="" onSubmit={formik.handleSubmit}>
-          <CustomInput type="text" name='email' label="Email Address" id="email" val={formik.values.email} onCh={formik.handleChange('email')}
+          <CustomInput type="text" name='email' label="Email Address" id="email" val={formik.email} onCh={formik.handleChange('email')}
           />
           <div className='error'>
           {formik.touched.email && formik.errors.email ? (
             <div>{formik.errors.email}</div>
           ) : null}
           </div>
-          <CustomInput type="password" name='password' label="Password" id="pass" val={formik.values.password} onCh={formik.handleChange('password')}
+          <CustomInput type="password" name='password' label="Password" id="pass" val={formik.password} onCh={formik.handleChange('password')}
           />
           <div className="error">
           {formik.touched.password&& formik.errors.password? (

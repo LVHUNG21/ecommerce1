@@ -1,4 +1,4 @@
-import {React,useSate} from 'react'
+import {React,useState} from 'react'
 import CustomInput from './CustomInput'
 import ReactQuill from 'react-quill';
 import {InboxOutlined} from "@ant-design/icons"
@@ -27,7 +27,7 @@ const props = {
     },
 };
 const Addblog = () => {
-    const [desc, setDesc] = useSate();
+    const [desc, setDesc] = useState();
     const handleDesc = (e) => {
         setDesc(e);
         console.log(e);

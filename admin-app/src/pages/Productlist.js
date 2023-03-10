@@ -3,8 +3,8 @@ import {BiEdit} from 'react-icons/bi';
 import {AiFillDelete} from 'react-icons/ai';
 import {Table} from "antd";
 import { useDispatch, useSelector } from 'react-redux';
-import {getProduct} from "../features/product/productSlice";
 import {Link} from "react-router-dom";
+import {getProduct} from "../features/product/productSlice";
 const columns = [
     {
       title: 'Sno',

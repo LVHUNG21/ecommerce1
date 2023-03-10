@@ -8,8 +8,15 @@ if(response.data){
 }
 return response.data;
 }
+const getOrders=async() =>{
+    const response=await axios.get(`${base_url}user/get-orders`);
 
+// if(response.data){
+//     localStorage.setItem('user',JSON.stringify(response.data))
+// }
+return response.data;
+}
 const authService={
-    login,
+    login,getOrders
 }
 export default authService;
