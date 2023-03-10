@@ -6,7 +6,7 @@ import {AiFillDelete} from 'react-icons/ai';
 import {Table} from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
-
+import {getOrders} from "../features/auth/authSlide"
 const columns = [
     {
       title: 'Sno',
