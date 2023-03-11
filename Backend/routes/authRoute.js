@@ -7,6 +7,7 @@ router.post('/register',createUser);
 router.post('/login',loginUserCtrl);
 router.post('/admin-login',loginAdmin);
 router.post('/cart',userCart);
+// router.post('/edit-user',authMiddleware,updatedaUser);
 router.post('/cart/applycoupon',authMiddleware,applyCoupon);
 router.post('/cart/cash-order',authMiddleware,createOrder);
 router.get("/all-users",getallUser);
@@ -25,7 +26,7 @@ router.delete("/:id",deleteaUser);
 router.get("/logout",logout);
 
 router.put("/edit-user",authMiddleware,updatedaUser);
-router.put("/edit-user",authMiddleware,updatedaUser);
+// router.put("/edit-user",authMiddleware,updatedaUser);
 router.put("/save-address/:id",authMiddleware,isAdmin,saveAddress);
 router.put("/unblock-user/:id",authMiddleware,isAdmin,unblockUser);
 router.put("/refresh",handleRefreshToken);

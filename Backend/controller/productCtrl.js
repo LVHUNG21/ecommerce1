@@ -1,4 +1,4 @@
-const Product = require("../models/ ProductModel");
+const Product = require("../models/ProductModel");
 const slugify = require("slugify");
 const asyncHandler=require("express-async-handler");
 const validateMongoDbId=require("../untils/validateMongodbId")
@@ -6,6 +6,7 @@ const cloundinaryUploadImg=require('../untils/cloundinary')
 const fs=require('fs');
 const createProduct = asyncHandler(async (req, res) => {
     try {
+        console.log(req.body);
         if (req.body.title) {
             req.body.slug = slugify(req.body.title);
         }
@@ -14,6 +15,7 @@ const createProduct = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new Error(error);
     }
+    console.log(req.body)
 });
 
 //update aproduct
@@ -71,7 +73,7 @@ const getallProduct = asyncHandler(async (req, res) => {
 
         //Sorting
         if (req.query.sort) {
-            const sortBy = req.query.sort.split(",").join("");
+            const sortBy = req.query.sort.split(",").join(" ");
             query = query.sort(sortBy);
         } else {
             query = query.sort("-createdAt")
