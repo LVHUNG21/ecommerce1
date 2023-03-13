@@ -38,35 +38,36 @@ const Orders= () => {
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(getOrders());
-  },[])
+  },[]);
   const orderState=useSelector((state)=>state.auth.orders);
-  console.log(orderState.orderby.firstname);
   console.log(orderState);
+  // console.log(orderState);
   const data1 = [];
-  for (let i = 0; i < orderState.length; i++) {
-    data1.push({
-      key: i+1,
-      name: orderState[i].orderby.firstname,
-      product:orderState[i].products.map((i,j)=>{
-        return <>
-          <ul key={j}>
-            <li>
-              {i.product.title} 
-              </li> 
-            </ul> 
-        </>;
-      }),
-      amount:orderState[i].paymentIntent.amount,
-      date: new Date(orderState[i].createAt).toLocaleString(),
-      action:(<>
-      <Link to='/' className='fs-3 text-danger'>
-          <BiEdit/>
-      </Link>
-      <Link to="/" className="ms-3 fs-3 text-danger">
-        <AiFillDelete/>
-      </Link>
-      </>)
-    });}
+  // for (let i = 0; i < orderState.length; i++) {
+  //   data1.push({
+  //     key: i+1,
+  //     name: orderState[i].orderby.firstname,
+  //     product:orderState[i].products.map((i,j)=>{
+  //       return( <>
+  //         <ul >
+  //           <li>
+  //             {i.product.title} 
+  //             </li> 
+  //           </ul> 
+  //       </>
+  //       );
+  //     }),
+  //     amount:orderState[i].paymentIntent.amount,
+  //     date: new Date(orderState[i].createAt).toLocaleString(),
+  //     action:(<>
+  //     <Link to='/' className='fs-3 text-danger'>
+  //         <BiEdit/>
+  //     </Link>
+  //     <Link to="/" className="ms-3 fs-3 text-danger">
+  //       <AiFillDelete/>
+  //     </Link>
+  //     </>)
+  //   });}
 
   return (
     <div>
