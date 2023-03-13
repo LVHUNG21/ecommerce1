@@ -4,6 +4,7 @@ const { generateRefreshToken } = require('../config/refreshToken');
 const uniqid=require('uniqid');
 const User = require('../models/userModel')
 const Cart= require('../models/cartModel')
+const Product=require('../models/ProductModel')
 const Order=require('../models/orderModel');
 const asyncHandler=require("express-async-handler");
 const Coupon=require("../models/couponModel"); 
@@ -299,44 +300,45 @@ const saveAddress=asyncHandler(async(req,res,next)=>{
     }
 })
 
-const userCart=asyncHandler(async(req,res,next)=>{
-    console.log(req.user);
-res.send("heesl")
-//     const {cart}=req.body;
-//     const {_id}=req.user;
-// validateMongodbId(_id);
-//  try{
-//     let products=[];
-//     const user=await User.findById(_id);
-//     //check if user already have product in cart
-//     const alreadyExistCart=await Cart.findOne({
-//         orderby:user._id
-//     });
-//     if(alreadyExistCart){
-//         alreadyExistCart.remove();
-//     }
-//     for(let i=0;i<cart.length;i++){
-//             let object={};
-//             object.product=cart[i]._id;
-//             object.count=cart[i].count;
-//             object.color=cart[i].color;
-//             let getPrice = await Product.findById(cart[i]._id).select("price").exec();
-//             object.price=getPrice.price;
-//             products.push(object);
-//     }
-//     let cartTotal=0;
-//     for(let i=0;i<products.length;i++){
-//         cartTotal=cartTotal+products[i].price*products[i].count;
-//     }
-//     let newCart=await new Cart({
-//         products,cartTotal,orderby:user?._id
-//     }).save();
-//     res.json(newCart);
-//     // console.log(products);
-//  }catch(error){
-//     console.log('error cart backedn');
-//     throw new Error(error);
-//  }
+const userCart=asyncHandler(async(req,res,next)=>{ 
+    const {cart}=req.body;
+    const {_id}=req.user;
+    console.log(_id);
+validateMongodbId(_id);
+ try{
+    let products=[];
+    const user=await User.findById(_id);
+    // console.log(user);
+    //check if user already have product in cart
+    const alreadyExistCart=await Cart.findOne({
+        orderby:user._id
+    });
+    console.log(alreadyExistCart);
+    if(alreadyExistCart){
+        alreadyExistCart.remove();
+    }
+    for(let i=0;i<cart.length;i++){
+            let object={};
+            object.product=cart[i]._id;
+            object.count=cart[i].count;
+            object.color=cart[i].color;
+            let getPrice = await Product.findById(cart[i]._id).select("price").exec();
+            object.price=getPrice.price;
+            products.push(object);
+    }
+    let cartTotal=0;
+    for(let i=0;i<products.length;i++){
+        cartTotal=cartTotal+products[i].price*products[i].count;
+    }
+    let newCart=await new Cart({
+        products,cartTotal,orderby:user?._id
+    }).save();
+    res.json(newCart);
+    console.log(products);
+ }catch(error){
+    console.log('error cart backedn');
+    throw new Error(error);
+ }
 });
 const getUserCart=asyncHandler(async(req,res)=>{
     const {_id}=req.user;
@@ -407,7 +409,7 @@ const createOrder=asyncHandler(async(req,res)=>{
                 currency:"USD",
 
             },
-            orderby:user_id,
+            orderby:user._id,
             orderStatus:"Cash On Delivery"
         }).save();
         let update=userCart.products.map((item)=>{
@@ -420,7 +422,7 @@ const createOrder=asyncHandler(async(req,res)=>{
             }
         })
         const updated=await Product.bulkWrite(update,{});
-        res.json({message:success})
+        res.json({message:'success'})
 
     }catch(error){
         throw new Error(error);
@@ -430,8 +432,18 @@ const getOrders=asyncHandler(async(req,res)=>{
     const {_id}=req.user;
     validateMongodbId(_id);
     try{
-        const userorders=await Order.findOne({orderby:_id}).populate("products.product").exec();
+    const userorders= await Order.findOne({orderby:_id}).populate("products.product").populate('orderby').exec();
         res.json(userorders);
+    }catch(error){
+        throw new Error(error);
+
+    }
+})
+const getAllOrders=asyncHandler(async(req,res)=>{
+    try{
+    const userorders= await Order.findOne().populate("products.product").populate('orderby').exec();
+        res.json(userorders);
+
     }catch(error){
         throw new Error(error);
 
@@ -458,4 +470,4 @@ const updateOrderStatus=asyncHandler(async(req,res)=>{
         throw new Error(error);
     }
 })
-module.exports = {createOrder,applyCoupon,emptyCart, createUser,getWishlist, userCart,loginAdmin,saveAddress,loginUserCtrl, getallUser, getaUser, deleteaUser, updatedaUser, blockUser,forgotPasswordToken, unblockUser,handleRefreshToken,logout,updatePassword,forgotPasswordToken,resetPassword,getUserCart,getOrders,updateOrderStatus};
+module.exports = {createOrder,applyCoupon,emptyCart,getAllOrders, createUser,getWishlist, userCart,loginAdmin,saveAddress,loginUserCtrl, getallUser, getaUser, deleteaUser, updatedaUser, blockUser,forgotPasswordToken, unblockUser,handleRefreshToken,logout,updatePassword,forgotPasswordToken,resetPassword,getUserCart,getOrders,updateOrderStatus};
