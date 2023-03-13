@@ -21,8 +21,16 @@ const columns = [
       dataIndex: 'product',
     },
     {
-        title: 'Status',
-        dataIndex: 'status',
+      title:'Amount',
+      dataIndex:'amount',
+    },
+    {
+      title:'Date',
+      dataIndex:'date',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
       },
   ];
  
@@ -32,11 +40,24 @@ const Orders= () => {
     dispatch(getOrders());
   },[])
   const orderState=useSelector((state)=>state.auth.orders);
+  console.log(orderState.orderby.firstname);
+  console.log(orderState);
   const data1 = [];
   for (let i = 0; i < orderState.length; i++) {
     data1.push({
       key: i+1,
-      title: orderState[i].title,
+      name: orderState[i].orderby.firstname,
+      product:orderState[i].products.map((i,j)=>{
+        return <>
+          <ul key={j}>
+            <li>
+              {i.product.title} 
+              </li> 
+            </ul> 
+        </>;
+      }),
+      amount:orderState[i].paymentIntent.amount,
+      date: new Date(orderState[i].createAt).toLocaleString(),
       action:(<>
       <Link to='/' className='fs-3 text-danger'>
           <BiEdit/>
