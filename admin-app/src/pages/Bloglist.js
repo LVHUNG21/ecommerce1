@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import {Table} from "antd";
+import {BiEdit} from 'react-icons/bi';
+import {Link} from "react-router-dom"
+import {AiFillDelete} from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBlog } from '../features/blogs/blogSlice';
 const columns = [
