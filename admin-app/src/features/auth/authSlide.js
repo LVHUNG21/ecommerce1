@@ -56,17 +56,17 @@ export const authSlide=createSlice({
             state.user=null;
         }).addCase(getOrders.pending,(state)=>{
             state.isLoading=true;
-        })   .addCase(getOrders.fulfilled,(state,action)=>{
+        }).addCase(getOrders.fulfilled,(state,action)=>{
             state.isError=false;
             state.isLoading=false;
             state.isSuccess=true;
-            state.orders =action.payload;
+            state.orders=action.payload;
         })
         .addCase(getOrders.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
-            state.user=null;
+            // state.user=null;
             state.isLoading=false;
     })},
 })
