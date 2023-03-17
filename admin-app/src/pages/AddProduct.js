@@ -6,7 +6,10 @@ import { Upload, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {getBrands} from '../features/brand/brandSlice';
+import { getCategories } from '../features/pcategory/pcategorySlice';
+import Multiselect from "react-widgets/Multiselect";
+
+import { getBrands } from '../features/brand/brandSlice';
 import "react-quill/dist/quill.snow.css";
 const { Dragger } = Upload;
 let userSchema = Yup.object({
@@ -17,13 +20,15 @@ let userSchema = Yup.object({
     color: Yup.string().required('color is required')
 });
 const AddProduct = () => {
-    const dispatch=useDispatch();
-
-    useEffect(()=>{
+    const dispatch = useDispatch();
+    useEffect(() => {
         dispatch(getBrands());
-    },[])
-    const brandState=useSelector((state)=>state.brand.brands);
-  
+        dispatch(getCategories());
+        dispatch(getColors());
+    }, [])
+    const brandState = useSelector((state) => state.brand.brands);
+    const catState = useSelector((state) => state.pCategory.pCategories);
+
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -74,10 +79,10 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <CustomInput type='text' label='Enter Product price'
-                     name="price"
-                            onChng={formik.handleChange('price')}
-                            onBlr={formik.handleBlur('price')}
-                            value={formik.values.price}  />
+                        name="price"
+                        onChng={formik.handleChange('price')}
+                        onBlr={formik.handleBlur('price')}
+                        value={formik.values.price} />
                     <div className='error'>
                         {
                             formik.touched.price && formik.errors.price
@@ -86,32 +91,49 @@ const AddProduct = () => {
                     <select className="form-control py-3 mb-3" name="" id="">
                         <option value="">
                             Select Category
-                        </option>
-                    </select>
-                    <select className="form-control py-3 mb-3" name="" id="">
-                        <option value="">
-                            Select Color
-                        </option>
-                    </select>
-                    <select className="form-control py-3 mb-3" name="" id="">
-                        <option value="">
-                            Select Brand
-                        </option>
-                        {brandState.map((i,j)=>{
+                    </option>
+                       
+                        {catState.map((i, j) => {
                             return (
                                 <option key={j} value={i.title}>
                                     {i.title}
                                 </option>
                             );
                         })}
-                    </select>
 
-                    <button type="submit" className='btn btn-success border-0 rounded-3 my-5'>
-                        Add Brand
-                    </button>
-                </form>
-            </div>
+                </select>
+                <select className="form-control py-3 mb-3" name="" id="">
+                    <Multiselect
+                        dataKey="id"
+                        textField="color"
+                        defaultValue={[1]}
+                        data={[
+                            { id: 1, color: "Red" },
+                            { id: 2, color: "Yellow" },
+                            { id: 3, color: "Blue" },
+                            { id: 4, color: "Orange" },
+                        ]}
+                    />;
+                </select>
+                <select className="form-control py-3 mb-3" name="" id="">
+                    <option value="">
+                        Select Brand
+                    </option>
+                    {brandState.map((i, j) => {
+                        return (
+                            <option key={j} value={i.title}>
+                                {i.title}
+                            </option>
+                        );
+                    })}
+                </select>
+
+                <button type="submit" className='btn btn-success border-0 rounded-3 my-5'>
+                    Add Brand
+                </button>
+            </form>
         </div>
+        </div >
     )
 };
 

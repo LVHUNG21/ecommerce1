@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table} from "antd";
+import { useDispatch, useSelector } from 'react-redux';
 const columns = [
     {
       title: 'Sno',
@@ -10,14 +11,19 @@ const columns = [
       dataIndex: 'name',
     },
     {
-      title: 'Product',
-      dataIndex: 'product',
-    },
-    {
         title: 'Status',
         dataIndex: 'status',
       },
   ];
+  const Colorlist =()=>{
+    const dispatch=useDispatch();
+    useEffect(()=>{
+      dispatch(getColors());
+    },[]);
+    const colorState=useSelector((state)=>{
+      state.color.colors;
+    })
+  
   const data1 = [];
   for (let i = 0; i < 46; i++) {
     data1.push({
@@ -37,5 +43,6 @@ const Colorlist = () => {
 </div>
   )
 }
+  }
 
 export default Colorlist

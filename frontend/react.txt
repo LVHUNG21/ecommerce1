@@ -1,0 +1,34 @@
+I.Frontend essentials
+ 1.HTML element
+ 2.Hyperlinks; Multimedia & Embedded
+    -Sometimes you need to add music or video into your web page. The easiest way to add video or sound to your web site is to include the special HTML tag called <embed>,<noembed>.
+    -HTML links are hyperlinks.You can click on a link and jump to another document.When you move the mouse over a link, the mouse arrow will turn into a little hand.
+    <a> tag defines a hyperlinks with attribute is 'target'
+    -Multimedia on the web is sound, music, videos, movies, and animations.
+        *The html <video> element is used to show a video on a web page.
+        *the html <audio> element is used to play an audio file on a web page.
+        *The <object> element is supported by all browsers. The <object> element defines an embedded object within an HTML document.
+3.Table and row
+    - HTML tables allow web developers to arrange data into rows and columns.
+4.CSS overview
+CSS (Cascading Style Sheets) is used to style and lay out web pages — for example,
+ to alter the font, color, size, and spacing of your content, 
+split it into multiple columns, or add animations and other decorative features. 
+This module provides a gentle beginning to your path towards CSS mastery with the basics of how it works,
+ what the syntax looks like, and how you can start using it to add styling to HTML.
+ 5.Cascade and Inheritance; Selectors
+     -to develop your understanding of some of the most fundamental concepts of CSS — the cascade,specificity,
+     and inheritance — which control how CSS is applied to HTML and how conflicts between style declarations are resolved.
+     -Stylesheets cascade — at a very simple level, this means that the origin, the cascade layer, and the order of CSS rules matter. When two rules from the same cascade layer apply and both have equal specificity, the one that is defined last in the stylesheet is the one that will be used
+     -Specificity is the algorithm that the browser uses to decide which property value is applied to an element. attribute 'class'. 
+        A class selector is more specific; it will select only the elements on a page that have a specific class attribute value, so it has more weight. Attribute selectors and pseudo-classes have the same weight as a class.
+     -Inheritance also needs to be understood in this context — some CSS property values set on parent elements are inherited by their child elements, and some aren't.
+     -Selectors 
+      * https://viblo.asia/p/30-css-selectors-can-nho-p2-aKYMNjelM83E
+
+
+
+
+
+
+
