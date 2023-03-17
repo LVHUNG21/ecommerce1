@@ -25,6 +25,21 @@ This module provides a gentle beginning to your path towards CSS mastery with th
      -Inheritance also needs to be understood in this context — some CSS property values set on parent elements are inherited by their child elements, and some aren't.
      -Selectors 
       * https://viblo.asia/p/30-css-selectors-can-nho-p2-aKYMNjelM83E
+6.Box Model; Overflow Contents
+    -The CSS overflow property controls what happens to content that is too big to fit into an area property 'overflow' in css
+    -Box Model:The CSS box model is essentially a box that wraps around every HTML element. 
+        It consists of: margins, borders, padding, and the actual content. The image below illustrates the box model:
+7.Values and Units; Sizing item
+    *Units:CSS has several different units for expressing a length.
+    Many CSS properties take "length" values, such as width, margin, padding, font-size, etc.
+    *Values:CSS values are set against CSS Properties and reside within CSS declaration block, which is a part of the CSS rule / statement.
+    CSS 2.1 allows following types of values : Integers and real numbers, Lengths, Percentages, URLs and URIs, Counters, Colors,
+    Strings, Unsupported Values.
+    *Sizing item: a set height can cause content to overflow if there is more content than the element has space to fit inside it.
+    Due to this problem of overflow, fixing the height of elements with lengths or percentages(phần trăm) is something we need to do very carefully on the web.
+    min- and max- sizes
+
+
 
 
 
