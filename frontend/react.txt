@@ -38,6 +38,146 @@ This module provides a gentle beginning to your path towards CSS mastery with th
     *Sizing item: a set height can cause content to overflow if there is more content than the element has space to fit inside it.
     Due to this problem of overflow, fixing the height of elements with lengths or percentages(phần trăm) is something we need to do very carefully on the web.
     min- and max- sizes
+8. Styling image and form; Debugging CSS
+https://www.w3schools.com/css/css3_images.asp
+
+
+II.Css advanced 
+1.Pseudo-Elements, Media Queries
+Pseudo-elements allow you to create virtual elements to decorate HTML elements without creating a new HTML element in the document structure. For example, 
+you can use ::before or ::after to add content before or after an HTML element.
+https://www.w3schools.com/css/css_pseudo_elements.asp
+*media Queries
+Media Queries are a way to change CSS styles based on device or browser attributes, such as screen size, aspect ratio, or screen resolution.
+This allows you to create responsive websites that work well on various devices.
+        .box {
+        background-color: yellow;
+        padding: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+        .box {
+            background-color: green;
+        }
+        }
+2.Color and Appearance, Flexbox
+Appearance: The CSS appearance property allows you to change the appearance of form controls, 
+such as checkboxes, radio buttons, and select boxes. 
+You can use the appearance property to create custom styles for these form controls,
+ or to make them look consistent across different browsers.
+            input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: gray;
+            border-radius: 20px;
+            width: 40px;
+            height: 20px;
+            }
+
+            input[type="checkbox"]:checked {
+            background-color: green;
+            }
+
+            input[type="checkbox"]::after {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            margin-left: 2px;
+            margin-top: 2px;
+            transition: transform 0.2s;
+            }
+
+            input[type="checkbox"]:checked::after {
+            transform: translateX(20px);
+            }
+ CSS Flexbox is a layout module that allows you to create flexible and responsive layouts for web pages. 
+ It allows you to align and distribute elements within a container, and to control the size and order of those elements.
+ .box {
+            display: flex;
+            justify-content: space-between;
+          }
+    gap-set khoang cách giữa các element
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout
+3. Tables, Grid, Background & Boders
+Tables: In CSS, you can style HTML tables using various properties such as border-collapse, border-spacing, table-layout, and more. 
+You can also style the cells and headers of a table using selectors like th, td, and tr.
+
+      table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #ddd;
+  font-weight: bold;
+}
+Grid: CSS Grid is a powerful layout system that allows you to create complex, responsive layouts using a grid of rows and columns. 
+You can define the size and position of grid items using various properties such as grid-template-columns, 
+grid-template-rows, grid-column, grid-row, and more.
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.item {
+  background-color: #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.item:nth-child(odd) {
+  background-color: #bbb;
+}
+
+.item.large {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+Background & Borders: CSS allows you to set background colors, images, and gradients for elements, as well as control the size and position of the background using properties like background-color, background-image, background-size, and background-position.
+ You can also style borders using properties like border, border-radius, border-color, and more.
+ 5. Gradient, Transforms and Transitions
+  background: linear-gradient(hướng, màu thứ nhất, màu thứ hai, ...);
+  background: radial-gradient(hình dạng at vị trí, màu bắt đầu, ..., màu kết thúc);
+
+  The transform CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.
+
+  CSS transitions provide a way to control animation speed when changing CSS properties.
+   Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time
+
+   6.Animation,css framework
+   CSS allows animation of HTML elements without using JavaScript or Flash!
+   properties:
+   @keyframes
+    animation-name
+    animation-duration
+    animation-delay
+    animation-iteration-count
+    animation-direction
+    animation-timing-function
+    animation-fill-mode
+    animation
+
+    css framework:SS framework là một tập hợp các thư viện đã được chuẩn bị sẵn và sẵn sàng sử dụng cho việc thiết kế web.
+     Chúng cung cấp một cấu trúc cơ bản để mang đến các giải pháp nhất quán, giúp giải quyết những vấn đề có tính lặp lại trong quá trình xây dựng giao diện cho website. 
+    Các chức năng chung trong CSS framework có thể được sử dụng cho các tình huống và ứng dụng cụ thể. 
+Áp dụng CSS framework sẽ tiết kiệm đáng kể thời gian xây mới ứng dụng và website cho các lập trình viên frontend. 
+Bạn hoàn toàn có thể tận dụng nền tảng cơ bản từ những ứng dụng trước đó cho trang web và ứng dụng hiện tại. 
+ các framework: bootstrap ,foundation,ulkit,Tailwind CSS,Pure CSS ,Bulma CSS
+
+
+
 
 
 
