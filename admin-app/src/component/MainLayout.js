@@ -92,12 +92,12 @@ const MainLayout = () => {
                 {
                   key: 'color',
                   icon: <AiOutlineBgColors className="fs-4" />,
-                  label: "Category",
+                  label: "Color",
                 },
                 {
                   key: "list-color ",
                   icon: <AiOutlineBgColors className='fs-4' />,
-                  label: "Category List"
+                  label: "Color List"
                 },
               ]
             },

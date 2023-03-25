@@ -1,10 +1,10 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
-import colorService from "./customerService";
+import colorService from "./colorService";
 
-export const getUser=createAsyncThunk('customer/get-customers',async(thunkAPI)=>{
+export const getColors=createAsyncThunk('color/get-colors',async(thunkAPI)=>{
     try{
-        return await customerService.getUsers();
+        return await colorService.getColors();
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
@@ -17,18 +17,18 @@ const initialState={
     message:"",
 };
 export const colorSlide=createSlice({
-    name:'color',
+    name:'colors',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.addCase(getUser.pending,(state)=>{
+        builder.addCase(getColors.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getUser.fulfilled,(state,action)=>{
+        }).addCase(getColors.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=false;
-            state.customers=action.payload;
-        }).addCase(getUser.rejected,(state,action)=>{
+            state.colors=action.payload;
+        }).addCase(getColors.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
