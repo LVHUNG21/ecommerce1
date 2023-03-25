@@ -9,6 +9,7 @@ const session = require('express-session')
 const {errorHandler,notFound}=require('./middlewares/errorHandler')
 const dotenv=require('dotenv').config();
 const authRouter=require('./routes/authRoute');
+const colorRouter=require('./routes/colorRoute');
 const blogRouter=require('./routes/blogRoute');
 const productRouter=require('./routes/productRoute');
 const categoryRouter=require('./routes/categoryRoute');
@@ -42,7 +43,9 @@ app.use("/api/blog",blogRouter);
 app.use('/api/category',categoryRouter);
 app.use('api/blogcategory',blogcatRouter);
 app.use('/api/brand',brandRouter);
+app.use('/api/color',colorRouter);
 app.use('/api/coupon',couponRouter);
+
 app.use(notFound);
 app.use(errorHandler);
 app.listen(PORT,()=>{
