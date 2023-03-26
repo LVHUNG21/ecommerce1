@@ -13,5 +13,6 @@ router.put('/rating',authMiddleware,isAdmin,rating);
 router.get('/',getallProduct);
 router.put('/:id',authMiddleware,isAdmin,updateProduct);
 router.delete("/:id",authMiddleware,isAdmin,deleteProduct)
+router.delete("/delete-img/:id",authMiddleware,isAdmin,deleteImages)
 
 module.exports=router;

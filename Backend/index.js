@@ -10,6 +10,7 @@ const {errorHandler,notFound}=require('./middlewares/errorHandler')
 const dotenv=require('dotenv').config();
 const authRouter=require('./routes/authRoute');
 const colorRouter=require('./routes/colorRoute');
+const enqRouter=require('./routes/enqRoute');
 const blogRouter=require('./routes/blogRoute');
 const productRouter=require('./routes/productRoute');
 const categoryRouter=require('./routes/categoryRoute');
@@ -44,6 +45,7 @@ app.use('/api/category',categoryRouter);
 app.use('api/blogcategory',blogcatRouter);
 app.use('/api/brand',brandRouter);
 app.use('/api/color',colorRouter);
+app.use('/api/enq',enqRouter);
 app.use('/api/coupon',couponRouter);
 
 app.use(notFound);
