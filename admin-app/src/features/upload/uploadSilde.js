@@ -1,34 +1,35 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
-import pCategoryService from "./pcategoryService";
+import colorService from "./colorService";
+import uploadService from "./uploadService";
 
-export const getCategories=createAsyncThunk('productCategory/get-categories',async(thunkAPI)=>{
+export const uploadImg=createAsyncThunk('upload/images',data,async(thunkAPI)=>{
     try{
-        return await pCategoryService.getProductCategories();
+        return await uploadService.uploadImg(data);
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
 });
 const initialState={
-    pCategories:[],
+    images:[],
       isError:false,
     isLoading:false,
     isSuccess:false,
     message:"",
 };
-export const pCategorySlice=createSlice({
-    name:'pCategories',
+export const imageSlide=createSlice({
+    name:'images',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.addCase(getCategories.pending,(state)=>{
+        builder.addCase(uploadImg.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getCategories.fulfilled,(state,action)=>{
+        }).addCase(uploadImg.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=false;
-            state.pCategories=action.payload;
-        }).addCase(getCategories.rejected,(state,action)=>{
+            state.images=action.payload;
+        }).addCase(uploadImg.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
@@ -36,4 +37,4 @@ export const pCategorySlice=createSlice({
         })
     },
 })
-export default pCategorySlice.reducer;
+export default uploadSlide.reducer;

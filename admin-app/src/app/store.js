@@ -6,6 +6,7 @@ import productReducer from '../features/product/productSlice';
 import pCategoryReducer from '../features/pcategory/pcategorySlice';
 import blogReducer from '../features/blogs/blogSlice';
 import colorReducer from '../features/color/colorSlice';
+import uplooadReducer from '../features/upload/uploadSilde';
 export const store=configureStore({
     reducer:{
         auth:authReducer,
@@ -15,6 +16,8 @@ export const store=configureStore({
         pCategory:pCategoryReducer,
         blogs:blogReducer,
         color:colorReducer,
+        upload:uplooadReducer,
+        
 
     }
 })

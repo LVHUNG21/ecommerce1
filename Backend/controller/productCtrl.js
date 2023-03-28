@@ -2,7 +2,7 @@ const Product = require("../models/ProductModel");
 const slugify = require("slugify");
 const asyncHandler=require("express-async-handler");
 const validateMongoDbId=require("../untils/validateMongodbId")
-const {cloudinaryDeleteImg,cloundinaryUploadImg}=require('../untils/cloundinary')
+const {cloudinaryDeleteImg,cloudinaryUploadImg}=require('../untils/cloundinary')
 const fs=require('fs');
 const createProduct = asyncHandler(async (req, res) => {
     try {

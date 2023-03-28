@@ -6,18 +6,20 @@ import { Upload, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Dropzone from 'react-dropzone'
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Multiselect from "react-widgets/Multiselect";
 import Combobox from 'react-widgets/Combobox';
 import "react-widgets/styles.css";
 import { getBrands } from '../features/brand/brandSlice';
 import "react-quill/dist/quill.snow.css";
-import {getColors} from '../features/color/colorSlice';
+import { getColors } from '../features/color/colorSlice';
+import Dropzone from 'react-dropzone'
 const { Dragger } = Upload;
 let userSchema = Yup.object({
     title: Yup.string().required("tite is Required"),
     description: Yup.string().required("Description is Required"),
-    price: Yup.string().required("pRICE IS REQUIRED"),
+    price: Yup.number().required("pRICE IS REQUIRED"),
     brand: Yup.string().required("brand is required"),
     category: Yup.string().required("category is required"),
     color: Yup.array().required('color is required'),
@@ -81,9 +83,9 @@ const AddProduct = () => {
                     </div>
                     <div className='mb-3'>
                         <ReactQuill theme="snow"
-
+                            type='text'
                             name="description"
-                            onChng={formik.handleChange('description')}
+                            onChange={formik.handleChange('description')}
                             value={formik.values.description} />
 
                         <div className='error'>
@@ -92,7 +94,10 @@ const AddProduct = () => {
                             }
                         </div>
                     </div>
-                    <CustomInput name='price' onChng={formik.handleChange('price')} onBlr={formik.handleBlur('price')} type='text' label='Enter Product price' />
+                    <CustomInput name='price' type='number'
+                        onChng={formik.handleChange("price")}
+                        onBlr={formik.handleBlur("price")}
+                        label='Enter Product price' />
                     <div className='error'>
                         {
                             formik.touched.price && formik.errors.price
@@ -118,10 +123,10 @@ const AddProduct = () => {
                             formik.touched.brand && formik.errors.brand
                         }
                     </div>
-             
+
                     <select className="form-control py-3 mb-3"
                         name="category"
-                        onChng={formik.handleChange('category')}
+                        onChange={formik.handleChange('category')}
                         onBlr={formik.handleBlur('category')}
                         val={formik.values.category}>
                         <option value="">
@@ -156,22 +161,31 @@ const AddProduct = () => {
                             formik.touched.color && formik.errors.color
                         }
                     </div>
-                  
-                    <CustomInput type='number'
+
+                    <CustomInput name='quantity' type='number'
                         label='Enter Product Quantity'
-                        name="quantity"
-                        onChng={formik.handleChange("quantity")}
-                        onBlr={formik.handleBlur("quantity")} 
+                        onChng={formik.handleChange('quantity')}
+                        onBlr={formik.handleBlur('quantity')}
                         val={formik.values.quantity} />
-                    <div className='error'>
+                    <div className="error">
                         {
                             formik.touched.quantity && formik.errors.quantity
                         }
                     </div>
-                    <button className='btn btn-success border-0 rounded-3 my-5' type ="submit">
-                    Add product
-
-
+                    <div className='bg-white border-1 p-5 text-center'>
+                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>Drag 'n' drop some files here, or click to select files</p>
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </div>
+                    <button className='btn btn-success border-0 rounded-3 my-5' type="submit">
+                        Add product
                     </button>
                 </form>
             </div>
