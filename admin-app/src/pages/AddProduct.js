@@ -12,6 +12,7 @@ import Combobox from 'react-widgets/Combobox';
 import "react-widgets/styles.css";
 import { getBrands } from '../features/brand/brandSlice';
 import "react-quill/dist/quill.snow.css";
+import {getColors} from '../features/color/colorSlice';
 const { Dragger } = Upload;
 let userSchema = Yup.object({
     title: Yup.string().required("tite is Required"),
@@ -36,7 +37,7 @@ const AddProduct = () => {
     const colorState = useSelector((state) => state.color.colors);
     const colors = []
     colorState.forEach((element) => {
-        color.push({
+        colors.push({
             _id: element._id,
             color: element.title
         })
@@ -91,19 +92,33 @@ const AddProduct = () => {
                             }
                         </div>
                     </div>
-
-                    <CustomInput type='text' label='Enter Product price'
-                        name="price"
-                        onChng={formik.handleChange('price')}
-                        onBlr={formik.handleBlur('price')}
-                        val={formik.values.price} />
-
+                    <CustomInput name='price' onChng={formik.handleChange('price')} onBlr={formik.handleBlur('price')} type='text' label='Enter Product price' />
                     <div className='error'>
                         {
                             formik.touched.price && formik.errors.price
                         }
                     </div>
-
+                    <select className="form-control py-3 mb-3" name="brand"
+                        onChange={formik.handleChange('brand')}
+                        onBlur={formik.handleBlur('brand')}
+                        value={formik.values.brand}>
+                        <option value="">
+                            Select Brand
+                        </option>
+                        {brandState.map((i, j) => {
+                            return (
+                                <option key={j} value={i.title}>
+                                    {i.title}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    <div className='error'>
+                        {
+                            formik.touched.brand && formik.errors.brand
+                        }
+                    </div>
+             
                     <select className="form-control py-3 mb-3"
                         name="category"
                         onChng={formik.handleChange('category')}
@@ -131,7 +146,7 @@ const AddProduct = () => {
                         dataKey="id"
                         textField="color"
                         defaultValue={[1]}
-                        onChange={(e) => { setColor }}
+                        onChange={(e) => { setColor(e) }}
                         data={
                             colors
                         }
@@ -141,26 +156,7 @@ const AddProduct = () => {
                             formik.touched.color && formik.errors.color
                         }
                     </div>
-                    <select className="form-control py-3 mb-3" name="brand"
-                        onChange={formik.handleChange('brand')}
-                        onBlur={formik.handleBlur('brand')}
-                        value={formik.values.brand}>
-                        <option value="">
-                            Select Brand
-                        </option>
-                        {brandState.map((i, j) => {
-                            return (
-                                <option key={j} value={i.title}>
-                                    {i.title}
-                                </option>
-                            );
-                        })}
-                    </select>
-                    <div className='error'>
-                        {
-                            formik.touched.brand && formik.errors.brand
-                        }
-                    </div>
+                  
                     <CustomInput type='number'
                         label='Enter Product Quantity'
                         name="quantity"
@@ -172,6 +168,11 @@ const AddProduct = () => {
                             formik.touched.quantity && formik.errors.quantity
                         }
                     </div>
+                    <button className='btn btn-success border-0 rounded-3 my-5' type ="submit">
+                    Add product
+
+
+                    </button>
                 </form>
             </div>
         </div >
