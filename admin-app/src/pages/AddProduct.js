@@ -6,7 +6,7 @@ import { Upload, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Dropzone from 'react-dropzone'
+
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Multiselect from "react-widgets/Multiselect";
 import Combobox from 'react-widgets/Combobox';
@@ -15,6 +15,9 @@ import { getBrands } from '../features/brand/brandSlice';
 import "react-quill/dist/quill.snow.css";
 import { getColors } from '../features/color/colorSlice';
 import Dropzone from 'react-dropzone'
+import { uploadImg } from '../features/upload/uploadSilde';
+import { delImg } from '../features/upload/uploadSilde';
+import { createProducts } from '../features/product/productSlice';
 const { Dragger } = Upload;
 let userSchema = Yup.object({
     title: Yup.string().required("tite is Required"),
@@ -28,15 +31,18 @@ let userSchema = Yup.object({
 const AddProduct = () => {
     const dispatch = useDispatch();
     const [color, setColor] = useState([]);
+    const [image, setImages] = useState([]);
     useEffect(() => {
         dispatch(getBrands());
         dispatch(getCategories());
         dispatch(getColors());
-        formik.values.color = color;
-    }, [])
+    }, []);
+
     const brandState = useSelector((state) => state.brand.brands);
     const catState = useSelector((state) => state.pCategory.pCategories);
     const colorState = useSelector((state) => state.color.colors);
+    const imgState=useSelector((state)=>state.upload.images);
+
     const colors = []
     colorState.forEach((element) => {
         colors.push({
@@ -44,7 +50,18 @@ const AddProduct = () => {
             color: element.title
         })
     });
-
+    const img= []
+    imgState.forEach((element) => {
+        img.push({
+            _id: element.public_id,
+            url: element.url,
+        })
+    });
+    useEffect(()=>{
+        formik.values.color=color;
+        formik.values.images=img;
+    },[color,img])
+  
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -53,10 +70,12 @@ const AddProduct = () => {
             category: '',
             color: '',
             quantity: '',
+            images:"",
         },
         validationSchema: userSchema,
         onSubmit: (values) => {
             alert(JSON.stringify(values))
+            dispatch(createProducts(values));
             // alert(JSON.stringify(values, null, 2));
         },
     });
@@ -127,7 +146,7 @@ const AddProduct = () => {
                     <select className="form-control py-3 mb-3"
                         name="category"
                         onChange={formik.handleChange('category')}
-                        onBlr={formik.handleBlur('category')}
+                        onBlur={formik.handleBlur('category')}
                         val={formik.values.category}>
                         <option value="">
                             Select Category
@@ -173,7 +192,7 @@ const AddProduct = () => {
                         }
                     </div>
                     <div className='bg-white border-1 p-5 text-center'>
-                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                        <Dropzone onDrop={(acceptedFiles) => dispatch(uploadImg(acceptedFiles))}>
                             {({ getRootProps, getInputProps }) => (
                                 <section>
                                     <div {...getRootProps()}>
@@ -184,13 +203,24 @@ const AddProduct = () => {
                             )}
                         </Dropzone>
                     </div>
+                    <div className="showimages d-flex"> 
+                    {imgState.map((i,j)=>{
+                        return  <div className='position-relative' key={j}>
+                            <button type='button' onClick={()=>dispatch(delImg(i.public_id))} className='btn-close position-absolute' style={{top:"10px",right:"10px"}}>
+
+                            </button>
+                        <img src={i.url} alt='' width={200} height={200}/>
+                        </div>
+                    })}
+                       
+                    </div>
                     <button className='btn btn-success border-0 rounded-3 my-5' type="submit">
                         Add product
                     </button>
                 </form>
             </div>
         </div >
-    )
+    );
 };
 
 
