@@ -1,17 +1,16 @@
 import axios from "axios"
 import { base_url } from "../../untils/base_url"
-
 import {config} from '../../untils/axiosconfig'
-const getBlogs=async() =>{
-    const response=await axios.get(`${base_url}blog/`);
+const getBlogCategory=async() =>{
+    const response=await axios.get(`${base_url}blogCategory/`);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
 // }
 return response.data;
 }
-const createBlog=async(blog)=>{
-    const response=await axios.post(`${base_url}blog/`,blog,config);
+const createBlogCategory=async(blogcategory)=>{
+    const response=await axios.post(`${base_url}blogCategory/`,blogcategory,config);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
@@ -19,8 +18,8 @@ const createBlog=async(blog)=>{
 return response.data;
 
 }
-const blogService={
-    getBlogs,
-    createBlog
+const bcategoryService={
+    getBlogCategory,
+    createBlogCategory
 }
-export default blogService;
+export default bcategoryService;

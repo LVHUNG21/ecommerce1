@@ -9,6 +9,14 @@ export const getCategories=createAsyncThunk('productCategory/get-categories',asy
         return thunkAPI.rejectWithValue(error);
     }
 });
+export const createCategorys=createAsyncThunk('productCategory/create-category',
+async(categoryData,thunkAPI)=>{
+    try {
+        return await pCategoryService.createCategorys(categoryData);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+})
 const initialState={
     pCategories:[],
       isError:false,
@@ -33,7 +41,20 @@ export const pCategorySlice=createSlice({
             state.isError=true;
             state.isSuccess=false;
             state.message=action.error;
+        }).addCase(createCategorys.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(createCategorys.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.createdCategorys=action.payload;
+        }).addCase(createCategorys.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
         })
+
     },
 })
 export default pCategorySlice.reducer;

@@ -20,7 +20,7 @@ const columns = [
         dataIndex: 'action',
       },
   ];
-  const Colorlist =()=>{
+const Colorlist = () => {
     const dispatch=useDispatch();
     useEffect(()=>{
       dispatch(getColors());
@@ -44,7 +44,6 @@ const columns = [
           </>)
     });
   }
-const Colorlist = () => {
   return (
     <div>
     <h3 className="mb-4 title">Color list</h3>
@@ -54,6 +53,5 @@ const Colorlist = () => {
 </div>
   )
 }
-  }
 
 export default Colorlist

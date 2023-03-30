@@ -43,7 +43,7 @@ app.use('/api/user',authRouter);
 app.use("/api/product",productRouter);
 app.use("/api/blog",blogRouter);
 app.use('/api/category',categoryRouter);
-app.use('api/blogcategory',blogcatRouter);
+app.use('/api/blogCategory',blogcatRouter);
 app.use('/api/brand',brandRouter);
 app.use('/api/color',colorRouter);
 app.use('/api/enq',enqRouter);
