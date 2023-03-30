@@ -1,14 +1,16 @@
 import { React, useEffect, useState } from 'react'
+import {useNavigate} from 'react-router-dom';
 import CustomInput from './CustomInput'
 import { InboxOutlined } from "@ant-design/icons"
 import ReactQuill from 'react-quill';
+import {  toast } from 'react-toastify';
 import { Upload, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { useFormik } from 'formik';
+import { useFormik, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
-
+import { productSlice } from '../features/product/productSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
-import Multiselect from "react-widgets/Multiselect";
+import { Select } from 'antd';
 import Combobox from 'react-widgets/Combobox';
 import "react-widgets/styles.css";
 import { getBrands } from '../features/brand/brandSlice';
@@ -18,18 +20,21 @@ import Dropzone from 'react-dropzone'
 import { uploadImg } from '../features/upload/uploadSilde';
 import { delImg } from '../features/upload/uploadSilde';
 import { createProducts } from '../features/product/productSlice';
-const { Dragger } = Upload;
+
+
 let userSchema = Yup.object({
     title: Yup.string().required("tite is Required"),
     description: Yup.string().required("Description is Required"),
     price: Yup.number().required("pRICE IS REQUIRED"),
     brand: Yup.string().required("brand is required"),
     category: Yup.string().required("category is required"),
-    color: Yup.array().required('color is required'),
+    tags:Yup.string().required('tags is required'),
+    color: Yup.array().min(1,'pick at least one color').required('color is required'),
     quantity: Yup.number().required('Quantity is required '),
 });
 const AddProduct = () => {
     const dispatch = useDispatch();
+    const navigate=useNavigate();
     const [color, setColor] = useState([]);
     const [image, setImages] = useState([]);
     useEffect(() => {
@@ -42,23 +47,33 @@ const AddProduct = () => {
     const catState = useSelector((state) => state.pCategory.pCategories);
     const colorState = useSelector((state) => state.color.colors);
     const imgState=useSelector((state)=>state.upload.images);
+    const newProduct=useSelector((state)=>state.product);
+    const {isSuccess,isLoading,isError,createdProducts}=newProduct;
+    useEffect(()=>{
+        if(isSuccess && createdProducts){          
+            toast.success('🦄 Product Added Successfully!' );
+        }
+        if(isError){
+            toast.error('🦄 something  went  Wrong!' );
+        }
+    },[isSuccess,isLoading,isError])
 
-    const colors = []
+    const coloropt = []
     colorState.forEach((element) => {
-        colors.push({
-            _id: element._id,
-            color: element.title
+        coloropt.push({
+            value: element._id,
+            label: element.title
         })
     });
     const img= []
     imgState.forEach((element) => {
         img.push({
-            _id: element.public_id,
+            public_id: element.public_id,
             url: element.url,
         })
     });
     useEffect(()=>{
-        formik.values.color=color;
+        formik.values.color=color ? color: " ";
         formik.values.images=img;
     },[color,img])
   
@@ -68,26 +83,28 @@ const AddProduct = () => {
             description: '',
             price: '',
             category: '',
+            tags:'',
             color: '',
             quantity: '',
             images:"",
         },
         validationSchema: userSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values))
+            alert(JSON.stringify(values));
             dispatch(createProducts(values));
             // alert(JSON.stringify(values, null, 2));
+            formik.resetForm();
+            setColor(null);
+            setTimeout(()=>{
+                    navigate('/admin/list-product');
+            },3000)
         },
     });
-    const { user, isLoading, isError, isSuccess, message } = useSelector(
-        (state) => state.auth
-    );
-    const [desc, setDesc] = useState();
-    const handleDesc = (e) => {
-        setDesc(e);
-        console.log(e);
-
+    const handleColors=(e) =>{
+        setColor(e);
+        console.log(color);
     }
+
     return (
         <div>
             <h3 className="mb-4 title">AddProduct
@@ -166,15 +183,31 @@ const AddProduct = () => {
                             formik.touched.category && formik.errors.category
                         }
                     </div>
-                    <Multiselect
-                        dataKey="id"
-                        textField="color"
-                        defaultValue={[1]}
-                        onChange={(e) => { setColor(e) }}
-                        data={
-                            colors
+                    <select className="form-control py-3 mb-3"
+                        name="tags"
+                        onChange={formik.handleChange('tags')}
+                        onBlur={formik.handleBlur('tags')}
+                        val={formik.values.tags}>
+                        <option value="" disabled>Select tags</option>
+                        <option value="featured">Featured</option>
+                        <option value="popular">Popular</option>
+                        <option value="special">special</option>
+
+                         
+
+                    </select>
+                    <div className='error'>
+                        {
+                            formik.touched.tags && formik.errors.tags
                         }
-                    />;
+                </div>
+                   <Select mode='multiple'
+                   allowClear
+                   className='w-100'
+                   placeholder='Select color'
+                   defaultValue={color}
+                   onChange={(i)=>handleColors(i)}
+                   options={coloropt}/>
                     <div className='error'>
                         {
                             formik.touched.color && formik.errors.color

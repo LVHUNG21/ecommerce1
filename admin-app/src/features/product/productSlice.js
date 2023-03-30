@@ -18,7 +18,6 @@ async(productData,thunkAPI)=>{
 })
 const initialState={
     products:[],
-    createdProducts:'',
       isError:false,
     isLoading:false,
     isSuccess:false,

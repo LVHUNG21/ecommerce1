@@ -5,7 +5,9 @@ import {
   // UserOutlined,
   // VideoCameraOutlined,
 } from '@ant-design/icons';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Outlet } from 'react-router-dom';
 import { IoIosNotifications } from "react-icons/io"
 import { ImBlog } from "react-icons/im";
@@ -169,9 +171,9 @@ const MainLayout = () => {
                   <p className="mb-0">Hung@gmail.com</p>
                 </div>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><Link className="dropdown-item py-1 mb-1 " style={{height:"auto",lineHeight:"20px"}} to="#">View Profile</Link></li>
-                  <li><Link className="dropdown-item py-1 mb-1 " style={{height:"auto",lineHeight:"20px"}} to="#">SignOut</Link></li>
-                  
+                  <li><Link className="dropdown-item py-1 mb-1 " style={{ height: "auto", lineHeight: "20px" }} to="#">View Profile</Link></li>
+                  <li><Link className="dropdown-item py-1 mb-1 " style={{ height: "auto", lineHeight: "20px" }} to="#">SignOut</Link></li>
+
 
                 </div>
               </div>
@@ -186,6 +188,16 @@ const MainLayout = () => {
             background: colorBgContainer,
           }}
         >
+          <ToastContainer position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+        
+            theme="light" />
           <Outlet />
         </Content>
       </Layout>
