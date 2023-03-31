@@ -1,11 +1,11 @@
 import { React, useEffect, useState } from 'react'
 import {  toast } from 'react-toastify';
 import CustomInput from './CustomInput'
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
-import { createBrands } from '../features/brand/brandSlice';
+import { createBrands, getABrand, updateBrands } from '../features/brand/brandSlice';
 import { resetState } from '../features/brand/brandSlice';
 let userSchema = Yup.object({
     title: Yup.string().required("Brand name is Required"),
@@ -13,8 +13,21 @@ let userSchema = Yup.object({
 const AddBrand = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
+
+  const location=useLocation();
+  const getBrandId=location.pathname.split("/")[3];
+  console.log(getBrandId)
     const newBrand=useSelector((state)=>state.brand);
-    const {isSuccess,isLoading,isError,createdBrands}=newBrand;
+    const {isSuccess,isLoading,isError,createdBrands,brandName,updateBrands}=newBrand;
+  useEffect(()=>{
+  if(getBrandId!==undefined){
+        dispatch(getABrand(getBrandId));
+        formik.values=brandName;
+  }else{
+    dispatch(resetState());
+  }
+  },[getBrandId])
+  console.log(location);
     useEffect(()=>{
         if(isSuccess && createdBrands){          
             toast.success('🦄 Brand Added Successfully!' );
@@ -22,18 +35,30 @@ const AddBrand = () => {
         if(isError){
             toast.error('🦄 something  went  Wrong when add brand!' );
         }
+        if(updateBrands && isSuccess){
+            toast.success("Brand UPDATE successfully");
+            navigate('/admin/list-brand')
+        }
     },[isSuccess,isLoading,isError])
 
     const formik = useFormik({
+        enableReinitialize:true,
         initialValues: {
-            title: '',
+            title: brandName || "",
         },
         validationSchema: userSchema,
         onSubmit: (values) => {
+            if(getBrandId!==undefined){
+                const data={id:getBrandId,brandData:values}
+                    dispatch(updateBrands(data));
+            }else{
+                dispatch(createBrands(values));
+            formik.resetForm();
+
+            }
             alert(JSON.stringify(values));
             dispatch(createBrands(values));
             // alert(JSON.stringify(values, null, 2));
-            formik.resetForm();
             setTimeout(()=>{
             dispatch(resetState());
             },3000)
@@ -41,7 +66,7 @@ const AddBrand = () => {
     });
   return (
     <div>
-        <h3 className="mb-4 title">Add Brand</h3>
+        <h3 className="mb-4 title">{getBrandId!==undefined?"Edit":"ADD"} Brand</h3>
         <div>
             <form action="" onSubmit={formik.handleSubmit}>
                 <CustomInput type="text" label="Enter brand" id='brand' 

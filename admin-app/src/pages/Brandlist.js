@@ -6,6 +6,7 @@ import {AiFillDelete} from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrands } from '../features/brand/brandSlice';
 import { useEffect } from 'react';
+import { resetState } from '../features/coupon/couponSlice';
 const columns = [
     {
       title: 'Sno',
@@ -22,7 +23,10 @@ const columns = [
   ];
 const Brandlist= () => {
   const dispatch=useDispatch();
-  useEffect(()=>{dispatch(getBrands())},[]);
+  useEffect(()=>{
+   dispatch(resetState()); 
+    dispatch(
+    getBrands())},[]);
   const brandState=useSelector((state)=>state.brand.brands);
   const data1=[];
   for (let i = 0; i < brandState.length; i++) {
@@ -30,7 +34,7 @@ const Brandlist= () => {
       key: i+1,
       name: brandState[i].title,
       action:(<>
-        <Link to='/' className='fs-3 text-danger'>
+        <Link to={`/admin/brand/${brandState[i]._id}`}   className='fs-3 text-danger'>
             <BiEdit/>
         </Link>
         <Link to="/" className="ms-3 fs-3 text-danger">

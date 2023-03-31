@@ -13,6 +13,6 @@ router.put("/dislikes",authMiddleware,isAdmin,dislikeBlog);
 router.put("/:id",authMiddleware,isAdmin,updateBlog);
 router.post("/:id",getBlog);
 router.delete('/:id',authMiddleware,isAdmin,deleteBlog);
-router.post("/",getAllBlog);
+router.get("/",getAllBlog);
 
 module.exports=router;

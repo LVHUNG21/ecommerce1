@@ -13,8 +13,8 @@ const createCoupon=asyncHandler(async(req,res)=>{
 })
 const getAllCoupon=asyncHandler(async(req,res)=>{
     try{
-        const Coupon=await Coupon.find();
-        res.json(Coupon);
+        const getallCoupon=await Coupon.find();
+        res.json(getallCoupon);
     }catch(error){
         throw new Error(error);
     }
