@@ -9,6 +9,8 @@ import * as Yup from 'yup';
 import CustomInput from './CustomInput'
 import ReactQuill from 'react-quill';
 import {InboxOutlined} from "@ant-design/icons"
+import {  toast } from 'react-toastify';
+import {getBlogCategory} from '../features/bcategory/bcategorySlice'
 // import "react-quill/dist/quill.snow.css"
 // import { Stepper } from 'react-form-stepper';
 
@@ -28,7 +30,7 @@ const Addblog = () => {
     const navigate=useNavigate();
     const [image, setImages] = useState([]);
     useEffect(() => {
-        dispatch(getCategories());
+        dispatch(getBlogCategory());
     }, []);
 
     const imgState=useSelector((state)=>state.upload.images);
@@ -37,7 +39,7 @@ const Addblog = () => {
     const {isSuccess,isLoading,isError,createdBlog}=blogState;
     useEffect(()=>{
         if(isSuccess && createdBlog){          
-            toast.success('🦄 Product Added Successfully!' );
+            toast.success('🦄 Blog Added Successfully!' );
         }
         if(isError){
             toast.error('🦄 something  went  Wrong!' );
@@ -71,7 +73,7 @@ const Addblog = () => {
             // alert(JSON.stringify(values, null, 2));
             formik.resetForm();
             setTimeout(()=>{
-                    navigate('/admin/list-product');
+                    navigate('/admin/list-s');
             },3000)
         },
     });
@@ -87,12 +89,13 @@ const Addblog = () => {
                     name='title' 
                      label='Enter blog title'  
                         onChng={formik.handleChange("title")}
-                        onBlr={formik.handleBlur("title")} />
-                        val={formik.values.title}
+                        onBlr={formik.handleBlur("title")} 
+
+                        val={formik.values.title}/>
                     </div>
                      <div className='error'>
                             {
-                                formik.touched.description && formik.errors.description
+                                formik.touched.title && formik.errors.title
                             }
                         </div>
                     <select className="form-control py-3  mt-3"  
