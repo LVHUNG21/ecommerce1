@@ -10,7 +10,7 @@ import CustomInput from './CustomInput'
 import ReactQuill from 'react-quill';
 import {InboxOutlined} from "@ant-design/icons"
 import {  toast } from 'react-toastify';
-import {getBlogCategory} from '../features/bcategory/bcategorySlice'
+import {getBlogCategory, resetState} from '../features/bcategory/bcategorySlice'
 // import "react-quill/dist/quill.snow.css"
 // import { Stepper } from 'react-form-stepper';
 
@@ -73,7 +73,8 @@ const Addblog = () => {
             // alert(JSON.stringify(values, null, 2));
             formik.resetForm();
             setTimeout(()=>{
-                    navigate('/admin/list-s');
+                dispatch(resetState())
+                  
             },3000)
         },
     });

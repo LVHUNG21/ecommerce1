@@ -1,16 +1,18 @@
+
+
 import axios from "axios"
 import { base_url } from "../../untils/base_url"
 import {config} from '../../untils/axiosconfig'
-const getBrands=async() =>{
-    const response=await axios.get(`${base_url}brand/`,config);
+const getCoupon=async() =>{
+    const response=await axios.get(`${base_url}coupon/`,config);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
 // }
 return response.data;
 }
-const createBrands=async(brand)=>{
-    const response=await axios.post(`${base_url}brand/`,brand,config);
+const createCoupon=async(coupon)=>{
+    const response=await axios.post(`${base_url}coupon/`,coupon,config);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
@@ -18,8 +20,7 @@ const createBrands=async(brand)=>{
 return response.data;
 
 }
-const brandService={
-    getBrands,
-    createBrands
+const couponService={
+getCoupon,createCoupon
 }
-export default brandService;
+export default couponService;

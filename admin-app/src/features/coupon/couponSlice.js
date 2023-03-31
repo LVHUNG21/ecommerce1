@@ -1,53 +1,53 @@
 import { createSlice,createAsyncThunk ,createAction} from "@reduxjs/toolkit";
-import brandService from  './brandService'; 
-export const getBrands=createAsyncThunk('brand/get-brands',async(thunkAPI)=>{
+import couponService from  './couponService'; 
+export const getAllcoupons=createAsyncThunk('coupon/get-coupons',async(thunkAPI)=>{
     try{
-        return await brandService.getBrands();
+        return await couponService.getCoupon();
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
 });
-export const createBrands=createAsyncThunk('brand/create-brand',
-async(brandData,thunkAPI)=>{
+export const createcoupons=createAsyncThunk('coupon/create-coupon',
+async(couponData,thunkAPI)=>{
     try {
-        return await brandService.createBrands(brandData);
+        return await couponService.createCoupon(couponData);
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
 })
 export const resetState=createAction("Reset_all");
 const initialState={
-    brands:[],
+    coupons:[],
       isError:false,
     isLoading:false,
     isSuccess:false,
     message:"",
 };
-export const brandSlice=createSlice({
-    name:'brands',
+export const couponSlice=createSlice({
+    name:'coupons',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.addCase(getBrands.pending,(state)=>{
+        builder.addCase(getAllcoupons.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getBrands.fulfilled,(state,action)=>{
+        }).addCase(getAllcoupons.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=false;
-            state.brands=action.payload;
-        }).addCase(getBrands.rejected,(state,action)=>{
+            state.coupons=action.payload;
+        }).addCase(getAllcoupons.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
             state.message=action.error;
-        }).addCase(createBrands.pending,(state)=>{
+        }).addCase(createcoupons.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(createBrands.fulfilled,(state,action)=>{
+        }).addCase(createcoupons.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=true;
-            state.createdBrands=action.payload;
-        }).addCase(createBrands.rejected,(state,action)=>{
+            state.createdCoupons=action.payload;
+        }).addCase(createcoupons.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
@@ -56,4 +56,4 @@ export const brandSlice=createSlice({
 
     },
 })
-export default brandSlice.reducer;
+export default couponSlice.reducer;

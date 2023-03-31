@@ -21,6 +21,8 @@ import Addcolor from './pages/Addcolor';
 import Addcat from './pages/Addcat';
 import AddBrand from './pages/AddBrand';
 import Addproduct from './pages/AddProduct';
+import Couponlist from './pages/Couponlist';
+import AddCoupon from './pages/AddCoupon';
 function App() {
   return (
   <Router>
@@ -33,6 +35,8 @@ function App() {
         <Route path='enquiries'element={<Enquiries/>}/>
         <Route path='blog-list'element={<Bloglist/>}/>
         <Route path='blog'element={<Addblog/>}/>
+        <Route path='coupon-list'element={<Couponlist/>}/>
+        <Route path='coupon'element={<AddCoupon/>}/>
         <Route path='blog-category-list'element={<Blogcatlist/>}/>
         <Route path='orders' element={<Orders/>}/>
         <Route path='list-color'element={<Colorlist/>}/>

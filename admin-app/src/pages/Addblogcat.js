@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
-import { newBlogCategory } from '../features/bcategory/bcategorySlice';
+import { newBlogCategory, resetState } from '../features/bcategory/bcategorySlice';
 let userSchema = Yup.object({
     title: Yup.string().required("Blog category name is Required"),
 });
@@ -35,6 +35,8 @@ const Addblogcat = () => {
             // alert(JSON.stringify(values, null, 2));
             formik.resetForm();
             setTimeout(()=>{
+                dispatch(resetState());
+
                     navigate('/admin/blog-category-list');
             },3000)
         },

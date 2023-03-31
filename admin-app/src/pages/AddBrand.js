@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 import { createBrands } from '../features/brand/brandSlice';
+import { resetState } from '../features/brand/brandSlice';
 let userSchema = Yup.object({
     title: Yup.string().required("Brand name is Required"),
 });
@@ -34,7 +35,7 @@ const AddBrand = () => {
             // alert(JSON.stringify(values, null, 2));
             formik.resetForm();
             setTimeout(()=>{
-                    navigate('/admin/list-brand');
+            dispatch(resetState());
             },3000)
         },
     });
