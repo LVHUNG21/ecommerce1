@@ -5,7 +5,7 @@ const router=express.Router();
 
 router.post('/',authMiddleware,isAdmin,createCategory)
 router.put('/:id',authMiddleware,isAdmin,updateCategory);
-router.delete('/:',authMiddleware,isAdmin,deleteCategory);
+router.delete('/:id',authMiddleware,isAdmin,deleteCategory);
 router.get('/:id',getCategory);
 router.get('/',getallCategory);
 module.exports=router;

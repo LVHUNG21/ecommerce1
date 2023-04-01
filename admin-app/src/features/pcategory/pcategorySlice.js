@@ -1,10 +1,17 @@
-import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk,createAction } from "@reduxjs/toolkit";
 
 import pCategoryService from "./pcategoryService";
 
 export const getCategories=createAsyncThunk('productCategory/get-categories',async(thunkAPI)=>{
     try{
         return await pCategoryService.getProductCategories();
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+});
+export const getACategory=createAsyncThunk('productCategory/get-category',async(id,thunkAPI)=>{
+    try{
+        return await pCategoryService.getCategory(id);
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
@@ -17,6 +24,22 @@ async(categoryData,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 })
+export const deleteACategory=createAsyncThunk('productCategory/delete-category',async(id,thunkAPI)=>{
+    try{
+        return await pCategoryService.deleteCategory(id);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+});
+export const updateCategory=createAsyncThunk('productCategory/update-category',
+async(categoryData,thunkAPI)=>{
+    try {
+        return await pCategoryService.updateCategorys(categoryData);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+})
+export const resetState=createAction("Reset_all");
 const initialState={
     pCategories:[],
       isError:false,
@@ -54,6 +77,46 @@ export const pCategorySlice=createSlice({
             state.isSuccess=false;
             state.message=action.error;
         })
+        .addCase(getACategory.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(getACategory.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.categoryName=action.payload;
+        }).addCase(getACategory.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
+        })
+        .addCase(updateCategory.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(updateCategory.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.updatedCategory=action.payload;
+        }).addCase(updateCategory.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
+        }).addCase(deleteACategory.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(deleteACategory.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.deletedCategory=action.payload;
+        }).addCase(deleteACategory.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
+        }).addCase(resetState,()=>initialState)
+
+
 
     },
 })

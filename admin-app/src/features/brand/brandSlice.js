@@ -7,9 +7,16 @@ export const getBrands=createAsyncThunk('brand/get-brands',async(thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 });
-export const getABrand=createAsyncThunk('brand/get-brand',async(thunkAPI)=>{
+export const getABrand=createAsyncThunk('brand/get-brand',async(id,thunkAPI)=>{
     try{
         return await brandService.getBrand(id);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+});
+export const deleteABrand=createAsyncThunk('brand/delete-brand',async(id,thunkAPI)=>{
+    try{
+        return await brandService.deleteBrand(id);
     }catch(error){
         return thunkAPI.rejectWithValue(error);
     }
@@ -22,7 +29,7 @@ async(brandData,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 })
-export const updateBrands=createAsyncThunk('brand/update-brand',
+export const updateBrand=createAsyncThunk('brand/update-brand',
 async(brandData,thunkAPI)=>{
     try {
         return await brandService.updateBrands(brandData);
@@ -80,14 +87,27 @@ export const brandSlice=createSlice({
             state.isSuccess=false;
             state.message=action.error;
         })
-       .addCase(updateBrands.pending,(state)=>{
+       .addCase(updateBrand.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(updateBrands.fulfilled,(state,action)=>{
+        }).addCase(updateBrand.fulfilled,(state,action)=>{
             state.isLoading=false;
             state.isError=false;
             state.isSuccess=true;
             state.updatedBrand=action.payload.title;
-        }).addCase(updateBrands.rejected,(state,action)=>{
+        }).addCase(updateBrand.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            state.message=action.error;
+        })
+        .addCase(deleteABrand.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(deleteABrand.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.isSuccess=true;
+            state.deletedBrand=action.payload;
+        }).addCase(deleteABrand.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;

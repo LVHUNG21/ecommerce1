@@ -45,8 +45,10 @@ function App() {
         <Route path='blog-category'element={<Addblogcat/>}/>
         <Route path='list-category'element={<Categorylist/>}/>
         <Route path='category'element={<Addcat/>}/>
+        <Route path='category/:id'element={<Addcat/>}/>
         <Route path='list-brand'element={<Brandlist/>}/>
         <Route path='brand'element={<AddBrand/>}/>
+        <Route path='brand/:id'element={<AddBrand/>}/>
         <Route path='list-product'element={<Productlist/>}/>
         <Route path='product'element={<Addproduct/>}/>
       </Route>

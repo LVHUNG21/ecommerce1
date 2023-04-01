@@ -5,7 +5,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
-import { createBrands, getABrand, updateBrands } from '../features/brand/brandSlice';
+import { createBrands, getABrand, updateBrand } from '../features/brand/brandSlice';
 import { resetState } from '../features/brand/brandSlice';
 let userSchema = Yup.object({
     title: Yup.string().required("Brand name is Required"),
@@ -15,10 +15,11 @@ const AddBrand = () => {
   const navigate=useNavigate();
 
   const location=useLocation();
+//   console.log(`brand:${location}`)
   const getBrandId=location.pathname.split("/")[3];
-  console.log(getBrandId)
+  console.log(`brand:${getBrandId}`)
     const newBrand=useSelector((state)=>state.brand);
-    const {isSuccess,isLoading,isError,createdBrands,brandName,updateBrands}=newBrand;
+    const {isSuccess,isLoading,isError,createdBrands,brandName,updatedBrand}=newBrand;
   useEffect(()=>{
   if(getBrandId!==undefined){
         dispatch(getABrand(getBrandId));
@@ -27,6 +28,7 @@ const AddBrand = () => {
     dispatch(resetState());
   }
   },[getBrandId])
+
   console.log(location);
     useEffect(()=>{
         if(isSuccess && createdBrands){          
@@ -35,7 +37,7 @@ const AddBrand = () => {
         if(isError){
             toast.error('🦄 something  went  Wrong when add brand!' );
         }
-        if(updateBrands && isSuccess){
+        if(updatedBrand && isSuccess){
             toast.success("Brand UPDATE successfully");
             navigate('/admin/list-brand')
         }
@@ -50,18 +52,21 @@ const AddBrand = () => {
         onSubmit: (values) => {
             if(getBrandId!==undefined){
                 const data={id:getBrandId,brandData:values}
-                    dispatch(updateBrands(data));
+                    dispatch(updateBrand(data));
             }else{
                 dispatch(createBrands(values));
             formik.resetForm();
+            setTimeout(()=>{
+                dispatch(resetState())
+            },400)
 
             }
-            alert(JSON.stringify(values));
+            // alert(JSON.stringify(values));
             dispatch(createBrands(values));
             // alert(JSON.stringify(values, null, 2));
             setTimeout(()=>{
             dispatch(resetState());
-            },3000)
+            },300)
         },
     });
   return (

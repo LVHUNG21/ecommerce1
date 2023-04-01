@@ -9,8 +9,16 @@ const getBrands=async() =>{
 // }
 return response.data;
 }
-const getBrand=async() =>{
+const getBrand=async(id) =>{
     const response=await axios.get(`${base_url}brand/${id}`,config);
+
+// if(response.data){
+//     localStorage.setItem('user',JSON.stringify(response.data))
+// }
+return response.data;
+}
+const deleteBrand=async(id) =>{
+    const response=await axios.delete(`${base_url}brand/${id}`,config);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
@@ -39,6 +47,7 @@ const brandService={
     updateBrands,
     getBrand,
     getBrands,
-    createBrands
+    createBrands,
+    deleteBrand
 }
 export default brandService;
