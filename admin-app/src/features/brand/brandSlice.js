@@ -21,14 +21,6 @@ export const deleteABrand=createAsyncThunk('brand/delete-brand',async(id,thunkAP
         return thunkAPI.rejectWithValue(error);
     }
 });
-export const createBrands=createAsyncThunk('brand/create-brand',
-async(brandData,thunkAPI)=>{
-    try {
-        return await brandService.createBrands(brandData);
-    }catch(error){
-        return thunkAPI.rejectWithValue(error);
-    }
-})
 export const updateBrand=createAsyncThunk('brand/update-brand',
 async(brandData,thunkAPI)=>{
     try {
@@ -37,6 +29,15 @@ async(brandData,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 })
+export const createBrands=createAsyncThunk('brand/create-brand',
+async(brandData,thunkAPI)=>{
+    try {
+        return await brandService.createBrands(brandData);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+})
+
 export const resetState=createAction("Reset_all");
 const initialState={
     brands:[],
