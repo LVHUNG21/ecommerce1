@@ -48,7 +48,8 @@ const Brandlist= () => {
         <Link to={`/admin/brand/${brandState[i]._id}`}   className='fs-3 text-danger'>
             <BiEdit/>
         </Link>
-        <button to="/" className="ms-3 fs-3 text-danger bg-transparent border-0" onClick={()=>showModal(brandState[i]._id)}>
+        <button to="/" className="ms-3 fs-3 text-danger bg-transparent border-0" 
+        onClick={()=>showModal(brandState[i]._id)}>
           <AiFillDelete/>
         </button>
         </>)

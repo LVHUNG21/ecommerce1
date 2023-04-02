@@ -62,7 +62,7 @@ const AddBrand = () => {
 
             }
             // alert(JSON.stringify(values));
-            dispatch(createBrands(values));
+            // dispatch(createBrands(values));
             // alert(JSON.stringify(values, null, 2));
             setTimeout(()=>{
             dispatch(resetState());
