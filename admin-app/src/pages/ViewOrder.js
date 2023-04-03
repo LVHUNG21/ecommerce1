@@ -1,24 +1,34 @@
 
 
+
 import React, { useEffect } from 'react'
 import {BiEdit} from 'react-icons/bi';
 import {AiFillDelete} from 'react-icons/ai';
 import {Table} from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
-import {getOrders} from "../features/auth/authSlide"
+import {getOrders,getOrderById} from "../features/auth/authSlide"
+i
 const columns = [
     {
       title: 'Sno',
       dataIndex: 'key',
     },
     {
-      title: 'Name',
+      title: 'Product Name',
       dataIndex: 'name',
     },
     {
-      title: 'Product',
-      dataIndex: 'product',
+      title: 'Brand',
+      dataIndex: 'brand',
+    },
+    {
+      title: 'Count',
+      dataIndex: 'count',
+    },
+    {
+      title:'Color',
+      dataIndex:'color',
     },
     {
       title:'Amount',
@@ -34,11 +44,14 @@ const columns = [
       },
   ]; 
 const ViewOrder= () => {
+  const location=useLocation();
+  const userId=location.pathname.split("/")[3];
+
   const dispatch=useDispatch();
   useEffect(()=>{
-    dispatch(getOrders());
+    dispatch(getOrderById(userId));
   },[]);
-  const orderState=useSelector((state)=>state.auth.orders);
+  const orderState=useSelector((state)=>state.auth.orderbyuser[0].products);
   // console.log(orderState[3].orderby.firstname);
   console.log(orderState.length);
 
@@ -46,12 +59,12 @@ const ViewOrder= () => {
   for (let i = 0; i < orderState.length; i++) {
     data1.push({
       key: i+1,
-      name: orderState[i].orderby.firstname,
-      product:<Link to={`/admin/order/${orderState[i].orderby._id}`}>
-          View Orders User 
-      </Link>,
-      amount:orderState[i].paymentIntent.amount,
-      date: new Date(orderState[i].createAt).toLocaleString(),
+      name: orderState[i].product.title,
+      brand: orderState[i].product.brand,
+      count:orderState[i].count,
+      amount:orderState[i].product.price,
+      color:orderState[i].product.color,
+      date:orderState[i].product.createAt,
       action:(<>
       <Link to='/' className='fs-3 text-danger'>
           <BiEdit/>
