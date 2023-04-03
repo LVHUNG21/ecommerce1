@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector,useNavigate } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import {BiArrowBack} from "react-icons/bi";
-import { getAEnq } from '../features/enq/enqSlice';
+import { getAEnq, resetState } from '../features/enq/enqSlice';
 const ViewEnq = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate=useNavigate();
     const getEnqId = location.pathname.split("/")[3];
-    const enqState = useSelector((state) => state.enquiry);
-    const { enquiryName, enquiryEmail, enquiryMobile, enquiryComment, enquiryStatus } = enqState;
+    const enquiryState = useSelector((state) => state.enquiry);
+    const { enquiryName, enquiryEmail, enquiryMobile, enquiryComment, enquiryStatus } = enquiryState;
     useEffect(() => {
         dispatch(getAEnq(getEnqId));
     })
@@ -17,6 +17,13 @@ const ViewEnq = () => {
         navigate(-1);
 
     }
+    const setEnquiryStatus=async(e)=>{
+        const data={id:i,enquiryData:e};
+        dispatch(updateAEnq(data))
+        dispatch(resetState)
+        await dispatch(getAEnq(getEnqId));
+      
+      }
     return (
         <div>
            <div className='d-flex justify-content-between align-items-center'>
@@ -70,7 +77,9 @@ const ViewEnq = () => {
                 <div className='d-flex align-items-center gap-3'>
                     <h6 className='mb-0'>Change Status:</h6>
                 <div>
-                    <select className='form-control form-select' id='' defaultValue={enquiryStatus?enquiryStatus:"Submitted "}>
+                    <select className='form-control form-select' 
+            onChange={(e)=>setEnquiryStatus(e.target.value,getEnqId)}
+                    id='' defaultValue={enquiryStatus?enquiryStatus:"Submitted "}>
                         <option value='default'> 
                         Submited
                         </option>

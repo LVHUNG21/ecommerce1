@@ -4,7 +4,7 @@ import { BiEdit } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { AiFillDelete, AiOutlineEye } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetState ,deleteAEnq,getEnqs} from '../features/enq/enqSlice';
+import { resetState ,deleteAEnq,getEnqs,updateAEnq} from '../features/enq/enqSlice';
 import CustomModal from '../component/CustomModal';
 
 
@@ -92,6 +92,8 @@ const Enquiries = () => {
     });
   }
 const setEnquiryStatus=async(e)=>{
+  const data={id:i,enquiryData:e};
+  dispatch(updateAEnq(data))
 
 }
   const deleteEnq  =async(e)=>{
