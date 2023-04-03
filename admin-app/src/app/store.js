@@ -9,6 +9,7 @@ import colorReducer from '../features/color/colorSlice';
 import uplooadReducer from '../features/upload/uploadSilde';
 import blogCategoryReducer from '../features/bcategory/bcategorySlice';
 import CouponReducer from '../features/coupon/couponSlice';
+import enquiryReducer from '../features/enq/enqSlice';
 export const store=configureStore({
     reducer:{
         auth:authReducer,
@@ -21,5 +22,6 @@ export const store=configureStore({
         upload:uplooadReducer,
         bCategory:blogCategoryReducer,
         coupon:CouponReducer,        
+        enquiry:enquiryReducer,
     }
 })

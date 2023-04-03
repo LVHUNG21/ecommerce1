@@ -11,7 +11,7 @@ router.put("/upload/:id",authMiddleware,isAdmin,uploadPhoto.array('images',2),bl
 
 router.put("/dislikes",authMiddleware,isAdmin,dislikeBlog);
 router.put("/:id",authMiddleware,isAdmin,updateBlog);
-router.post("/:id",getBlog);
+router.get("/:id",getBlog);
 router.delete('/:id',authMiddleware,isAdmin,deleteBlog);
 router.get("/",getAllBlog);
 

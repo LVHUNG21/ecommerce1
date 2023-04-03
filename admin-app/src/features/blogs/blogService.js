@@ -16,6 +16,7 @@ const getBlog=async(id) =>{
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))
 // }
+console.log(`errorlog:${response}`)
 return response.data;
 }
 const createBlog=async(blog)=>{

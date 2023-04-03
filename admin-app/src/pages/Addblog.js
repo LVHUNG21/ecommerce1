@@ -31,9 +31,7 @@ const Addblog = () => {
     
     const navigate=useNavigate();
     const location=useLocation();
-    //   console.log(`brand:${location}`)
       const getBlogId=location.pathname.split("/")[3];
-    //   console.log(`brand:${getBrandId}`)
         const newBlog=useSelector((state)=>state.blogs);
         const {isSuccess,isLoading,isError,createdBlog,updatedBlog,blogName,blogDes,blogCategory,blogImages}=newBlog;
       useEffect(()=>{
@@ -54,17 +52,17 @@ const Addblog = () => {
 
     const imgState=useSelector((state)=>state.upload.images);
     const bCatState=useSelector((state)=>state.bCategory.bCategories);
-    const blogState=useSelector((state)=>state.blogs)
     useEffect(()=>{
         if(isSuccess && createdBlog){          
             toast.success('🦄 Blog Added Successfully!' );
+            navigate('/admin/blog-list')
         }
         if(isError){
             toast.error('🦄 something  went  Wrong!' );
         }
          if(updatedBlog && isSuccess){
             toast.success("Blog UPDATE successfully");
-            navigate('/admin/list-blog')
+            navigate('/admin/blog-list')
         }
     },[isSuccess,isLoading,isError])
     
@@ -77,7 +75,7 @@ const Addblog = () => {
     });
     useEffect(()=>{
         formik.values.images=img;
-    },[img])
+},[blogImages])
   
     const formik = useFormik({
         initialValues: {
@@ -93,8 +91,7 @@ const Addblog = () => {
             if(getBlogId!==undefined){
                 const data={id:getBlogId,blogData:values}
                     dispatch(updateBlog(data));
-
-                    dispatch(resetState)
+                    dispatch(resetState())
             }else{
                 dispatch(createBlog(values));
             formik.resetForm();
@@ -103,12 +100,7 @@ const Addblog = () => {
             },400)
 
             }
-            // alert(JSON.stringify(values, null, 2));
-            // formik.resetForm();
-            // setTimeout(()=>{
-            //     dispatch(resetState())
-                  
-            // },300)
+           
         },
     });
    
