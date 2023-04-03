@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector,useNavigate } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 import {BiArrowBack} from "react-icons/bi";
-import { getAEnq, resetState } from '../features/enq/enqSlice';
+import { getAEnq, resetState,updateEnq } from '../features/enq/enqSlice';
 const ViewEnq = () => {
     const location = useLocation();
     const dispatch = useDispatch();
-    const navigate=useNavigate();
+    const navigate =useNavigate();
     const getEnqId = location.pathname.split("/")[3];
     const enquiryState = useSelector((state) => state.enquiry);
     const { enquiryName, enquiryEmail, enquiryMobile, enquiryComment, enquiryStatus } = enquiryState;
@@ -17,11 +18,12 @@ const ViewEnq = () => {
         navigate(-1);
 
     }
-    const setEnquiryStatus=async(e)=>{
+    const setEnquiryStatus=async(e,i)=>{
+        console.log(`e is ${e}`)
         const data={id:i,enquiryData:e};
-        dispatch(updateAEnq(data))
+        dispatch(updateEnq(data))
         dispatch(resetState)
-        await dispatch(getAEnq(getEnqId));
+        await dispatch(getAEnq(getEnqId))
       
       }
     return (
@@ -78,19 +80,19 @@ const ViewEnq = () => {
                     <h6 className='mb-0'>Change Status:</h6>
                 <div>
                     <select className='form-control form-select' 
-            onChange={(e)=>setEnquiryStatus(e.target.value,getEnqId)}
-                    id='' defaultValue={enquiryStatus?enquiryStatus:"Submitted "}>
-                        <option value='default'> 
+                    onChange={(e)=>setEnquiryStatus(e.target.value,getEnqId)}
+                    id='' defaultValue={enquiryStatus ? enquiryStatus:"Submitted "}>
+                        <option value='Submited'> 
                         Submited
                         </option>
-                        <option value=''> 
-                        Resolved
-                        </option>
-                        <option value=''> 
+                        <option value='Contacted'> 
                         Contacted
                         </option>
-                        <option value=''> 
-                        In progress
+                        <option value='In Progress'> 
+                        In Progress 
+                        </option>
+                        <option value='Resolved'> 
+                        Resolved
                         </option>
                     </select>
                 </div>

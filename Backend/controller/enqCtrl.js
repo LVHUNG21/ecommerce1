@@ -38,6 +38,20 @@ const getEnquiry=asyncHandler(async(req,res)=>{
 
     }
 })
+const updateEnquiry=asyncHandler(async(req,res)=>{
+    const {id}=req.params;
+    validateMongoDbId(id);
+    try{
+        const updateEnquiry=await Enquiry.findByIdAndUpdate(id,req.body,{
+            new:true,
+        });
+        res.json(updateEnquiry)
+    }catch(error){
+            throw new Error(error)
+
+    }
+
+})
 const getallEnquiry=asyncHandler(async(req,res)=>{
     // const {id}=req.params;
     // validateMongoDbId(id);
@@ -51,4 +65,4 @@ const getallEnquiry=asyncHandler(async(req,res)=>{
     }
 })
 
-module.exports={createEnquiry,deleteEnquiry,getEnquiry,getallEnquiry};
+module.exports={createEnquiry,deleteEnquiry,getEnquiry,getallEnquiry,updateEnquiry};

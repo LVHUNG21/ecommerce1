@@ -4,7 +4,7 @@ import { BiEdit } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { AiFillDelete, AiOutlineEye } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetState ,deleteAEnq,getEnqs,updateAEnq} from '../features/enq/enqSlice';
+import { resetState ,deleteAEnq,getEnqs,updateEnq} from '../features/enq/enqSlice';
 import CustomModal from '../component/CustomModal';
 
 
@@ -63,16 +63,16 @@ const Enquiries = () => {
           <select className='form-control form-select' id=''
           onChange={(e)=>setEnquiryStatus(e.target.value,enquiryState[i]._id)}
            defaultValue={enquiryState[i].status?enquiryState[i].status:"Submitted "}>
-                        <option value='default'> 
+                        <option value='Submited'> 
                         Submited
                         </option>
-                        <option value=''> 
+                        <option value='Resolved'> 
                         Resolved
                         </option>
-                        <option value=''> 
+                        <option value='Contacted'> 
                         Contacted
                         </option>
-                        <option value=''> 
+                        <option value='In Progress'> 
                         In progress
                         </option>
                     </select>
@@ -91,9 +91,9 @@ const Enquiries = () => {
       )
     });
   }
-const setEnquiryStatus=async(e)=>{
+const setEnquiryStatus=async(e,i)=>{
   const data={id:i,enquiryData:e};
-  dispatch(updateAEnq(data))
+  dispatch(updateEnq(data))
 
 }
   const deleteEnq  =async(e)=>{

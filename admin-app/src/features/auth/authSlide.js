@@ -36,6 +36,13 @@ export const getOrders=createAsyncThunk('order/get-orders',async(thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 });
+export const getOrder=createAsyncThunk('order/get-order',async(id,thunkAPI)=>{
+    try{
+        return await authService.getOrder(id);
+    }catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+});
 export const authSlide=createSlice({
     name:"auth",
     initialState,
@@ -54,20 +61,23 @@ export const authSlide=createSlice({
             state.isError=true;
             state.isSuccess=false;
             state.user=null;
-        }).addCase(getOrders.pending,(state)=>{
+        })
+    .addCase(getOrder.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getOrders.fulfilled,(state,action)=>{
+        }).addCase(getOrder.fulfilled,(state,action)=>{
             state.isError=false;
             state.isLoading=false;
             state.isSuccess=true;
-            state.orders=action.payload;
+            state.orderbyuser=action.payload;
         })
-        .addCase(getOrders.rejected,(state,action)=>{
+        .addCase(getOrder.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
             // state.user=null;
             state.isLoading=false;
-    })},
+    })
+    
+    },
 })
 export default authSlide.reducer;
