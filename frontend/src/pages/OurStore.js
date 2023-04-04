@@ -7,8 +7,21 @@ import {Link, getLocation} from 'react-router-dom'
 import ProductCard from '../components/ProductCard';
 import Color from '../components/Color';
 import Container from '../components/Container';
+import { useDispatch, useSelector } from 'react-redux';
 const OurStore = () => {
+
     const [grid,setGrid]=useState(4);
+    const productState=useSelector((state)=>state.product.product); 
+    const dispatch=useDispatch();
+    useEffect(()=>{
+        getProducts();
+    })
+    const getProducts=()=>{
+        dispatch(getAllProducts());
+
+
+
+    }
     const gridSetter =(i) =>{
         setGrid(i)
     }
