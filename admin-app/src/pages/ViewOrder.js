@@ -1,14 +1,11 @@
-
-
-
 import React, { useEffect } from 'react'
 import {BiEdit} from 'react-icons/bi';
 import {AiFillDelete} from 'react-icons/ai';
 import {Table} from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
-import {getOrders,getOrderById} from "../features/auth/authSlide"
-i
+import {getOrderByUser,getOrder} from "../features/auth/authSlide"
+import { useLocation } from 'react-router-dom';
 const columns = [
     {
       title: 'Sno',
@@ -49,9 +46,10 @@ const ViewOrder= () => {
 
   const dispatch=useDispatch();
   useEffect(()=>{
-    dispatch(getOrderById(userId));
+    dispatch(getOrderByUser(userId));
   },[]);
-  const orderState=useSelector((state)=>state.auth.orderbyuser[0].products);
+  const orderState=useSelector((state)=>state.auth.orderbyuser.products)
+
   // console.log(orderState[3].orderby.firstname);
   console.log(orderState.length);
 
@@ -62,9 +60,9 @@ const ViewOrder= () => {
       name: orderState[i].product.title,
       brand: orderState[i].product.brand,
       count:orderState[i].count,
-      amount:orderState[i].product.price,
       color:orderState[i].product.color,
-      date:orderState[i].product.createAt,
+      amount:orderState[i].product.price,
+      date:orderState[i].product.createdAt,
       action:(<>
       <Link to='/' className='fs-3 text-danger'>
           <BiEdit/>
@@ -85,4 +83,4 @@ const ViewOrder= () => {
   )
 }
 
-export default ViewOrder
+export default ViewOrder 

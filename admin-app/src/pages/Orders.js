@@ -51,7 +51,7 @@ const Orders= () => {
           View Orders
       </Link>,
       amount:orderState[i].paymentIntent.amount,
-      date: new Date(orderState[i].createAt).toLocaleString(),
+      date: new Date(orderState[i].createdAt).toLocaleString(),
       action:(<>
       <Link to='/' className='fs-3 text-danger'>
           <BiEdit/>

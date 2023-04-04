@@ -23,7 +23,7 @@ const getOrders=async() =>{
 return response.data;
 }
 const getOrder=async(id) =>{
-    const response=await axios.get(`${base_url}user/getorderbyuser/${id}`,"",config);
+    const response=await axios.post(`${base_url}user/getorderbyuser/${id}`,"",config);
 
 // if(response.data){
 //     localStorage.setItem('user',JSON.stringify(response.data))

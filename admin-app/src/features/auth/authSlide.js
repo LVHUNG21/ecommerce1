@@ -16,6 +16,7 @@ const userDefaultState={
 const initialState={
     user:getUserfromLocalStorage,
     orders:[],
+    orderbyuser:[],
     isError:false,
     isLoading:false,
     isSuccess:false,
@@ -36,7 +37,7 @@ export const getOrders=createAsyncThunk('order/get-orders',async(thunkAPI)=>{
         return thunkAPI.rejectWithValue(error);
     }
 });
-export const getOrder=createAsyncThunk('order/get-order',async(id,thunkAPI)=>{
+export const getOrderByUser=createAsyncThunk('order/get-order',async(id,thunkAPI)=>{
     try{
         return await authService.getOrder(id);
     }catch(error){
@@ -62,15 +63,30 @@ export const authSlide=createSlice({
             state.isSuccess=false;
             state.user=null;
         })
-    .addCase(getOrder.pending,(state)=>{
+    .addCase(getOrderByUser.pending,(state)=>{
             state.isLoading=true;
-        }).addCase(getOrder.fulfilled,(state,action)=>{
+        }).addCase(getOrderByUser.fulfilled,(state,action)=>{
             state.isError=false;
             state.isLoading=false;
             state.isSuccess=true;
             state.orderbyuser=action.payload;
         })
-        .addCase(getOrder.rejected,(state,action)=>{
+        .addCase(getOrderByUser.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuccess=false;
+            // state.user=null;
+            state.isLoading=false;
+    })
+      .addCase(getOrders.pending,(state)=>{
+            state.isLoading=true;
+        }).addCase(getOrders.fulfilled,(state,action)=>{
+            state.isError=false;
+            state.isLoading=false;
+            state.isSuccess=true;
+        state.orders=action.payload;
+        })
+        .addCase(getOrders.rejected,(state,action)=>{
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
