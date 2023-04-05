@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import Marquee from 'react-fast-marquee'
 import BlogCard from '../components/BlogCard'
 import ProductCard from '../components/ProductCard'
@@ -6,7 +6,17 @@ import { Link } from 'react-router-dom'
 import SpecialProduct from '../components/SpecialProduct'
 import Container from '../components/Container'
 import { services } from "../utils/Data"
+import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
+  const blogState = useSelector((state) => state?.blog?.blog);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getBlogs();
+  }, [])
+
+  const getBlogs = () => {
+    dispatch(getAllBlogs());
+  }
   // const [data, setData] = useState();
   return (
     <>
@@ -72,26 +82,26 @@ const Home = () => {
 
       </Container>
       <Container class1="home-wrapper-2 py-5">
-            <div className="row">
-              <div className="col-12">
-                <div className="servies d-flex align-items-center justify-content-between">
-                  {
-                    services?.map((i, j) => {
-                      return (
-                        <div className='d-flex align-items-center gap-15  ' key={j}>
-                          <img src={i.image} alt='services' />
-                          <div>
-                            <h6>{i.title}</h6>
-                            <p className='mb-0'>{i.tagline}</p>
-                          </div>
-                        </div>
-                      )
-                    }
-                    )
-                  }
-                </div>
-              </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="servies d-flex align-items-center justify-content-between">
+              {
+                services?.map((i, j) => {
+                  return (
+                    <div className='d-flex align-items-center gap-15  ' key={j}>
+                      <img src={i.image} alt='services' />
+                      <div>
+                        <h6>{i.title}</h6>
+                        <p className='mb-0'>{i.tagline}</p>
+                      </div>
+                    </div>
+                  )
+                }
+                )
+              }
             </div>
+          </div>
+        </div>
       </Container>
 
       <Container class1="home-wrapper-2 py-5">
@@ -224,7 +234,7 @@ const Home = () => {
               <img src='images/subbanner-04.webp' className="img-fluid" alt="famous"></img>
               <div className="famous-content position-absolute">
                 <h5 className='text-dark'>
-                Home Speaker
+                  Home Speaker
                 </h5>
                 <h6 className='text-dark'>
                   Smart watch Series 7
@@ -286,15 +296,25 @@ const Home = () => {
 
       <Container class1="blog-wrapper py-5 home-wrapper-2">
         <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Featured Collection</h3>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-3"><BlogCard /></div>
-          <div className="col-3"><BlogCard /></div>
-          <div className="col-3"><BlogCard /></div>
-          <div className="col-3"><BlogCard /></div>
+          {blogState &&
+            blogState.map((item, index) => {
+              if(index<3){
+                return (
+                <div className="col-3 mb-3"key={index}>
+                  <BlogCard
+                    id={item?._id}
+                    title={item?.title}
+                    description={item?.images[0].url}
+                    image={item?.images[0]?.url}
+                    date={moment(item?.createdAt).format("MMMM Do YYYY,h:mm:ss a")}
+                  /></div>
+
+
+              )
+              }
+            }
+            )
+          }
         </div>
 
       </Container>

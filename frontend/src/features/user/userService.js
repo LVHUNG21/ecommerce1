@@ -16,8 +16,16 @@ const login=async(userData)=>{
         return respone.data;    
     }
 }
+const getUserWishlist=async()=>{
+    const respone=await axios.get(`${base_url}user/wishlist`,config);
+
+    if(respone.data){
+        return respone.data;    
+    }
+}
 
 export const userService={
     register ,
+    getUserWishlist,
     login
 }

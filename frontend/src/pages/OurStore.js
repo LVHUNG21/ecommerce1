@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard';
 import Color from '../components/Color';
 import Container from '../components/Container';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../features/product/productSlice';
 const OurStore = () => {
 
     const [grid,setGrid]=useState(4);
